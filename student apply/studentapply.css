@@ -1,0 +1,105 @@
+body {
+    display: flex;
+    margin: 0px;
+    background-color: #bedc74;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#sidebar {
+    display: flex;
+    width: 250px;
+    padding: 5px;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f6e96e;
+    border: #387f39 solid 5px;
+}
+
+#cotj {
+    font-size: large;
+    font-weight: bold;
+}
+
+#logo {
+    width: 50%;
+}
+
+#sidebar > button {
+    margin-bottom: 10px;
+}
+
+#main-page {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+}
+
+#application {
+    margin-top: 10px;
+    display: flex;
+    background-color: #f6e96e;
+    border: #387f39 solid 5px;
+    width: 600px;
+    height: 300px;
+    border-radius: 30px;
+    padding: 15px;
+    position: relative;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#job-title {
+    font-size: large;
+    font-weight: bold;
+    background-color: #bedc74;
+    border-radius: 10px;
+    border: #387f39 5px solid;
+    padding: 5px;
+}
+
+#applicant-exp {
+    border-radius: 10px;
+    border: #387f39 5px solid;
+    padding: 5px;
+    height: 100px;
+}
+
+#applicant-exp::placeholder {
+    font-family: Arial, Helvetica, sans-serif;
+    color:bl
+}
+
+#application-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+#contact-info {
+    display: flex;
+    flex-direction: column;
+    gap:2px;
+}
+
+#phone-number {
+    border-radius: 5px;
+    border: #387f39 2px solid;
+}
+
+#email {
+    border-radius: 5px;
+    border: #387f39 2px solid;
+}
+
+#submit {
+    width: 150px;
+    border: 5px solid #387f39;
+    border-radius: 10px;
+    background-color: #bedc74;
+    margin-bottom: 10px;
+    font-size: large;
+    font-weight: bold;
+    position: absolute;
+    right: 45px;
+    bottom: 5px;
+}
