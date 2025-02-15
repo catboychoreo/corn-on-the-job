@@ -5,6 +5,11 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+button:hover {
+    background-color: #387f39 !important;
+    transition: background-color 0.2s;
+}
+
 #sidebar {
     display: flex;
     width: 250px;
@@ -13,6 +18,14 @@ body {
     flex-direction: column;
     background-color: #f6e96e;
     border: #387f39 solid 5px;
+}
+
+#sidebar > button {
+    border-radius: 10px;
+    border: #387f39 5px solid;
+    padding: 5px;
+    background-color: #bedc74;
+    font-weight: bold;
 }
 
 #cotj {

@@ -16,3 +16,9 @@ let homeButton = document.getElementById("home")
 homeButton.onclick = function(){
     window.location = "../student%20home/studenthome.html"
 }
+
+let logOutButton = document.getElementById("student-logout")
+
+logOutButton.onclick = function(){
+    window.location = "../sign%20in/signin.html"
+}
