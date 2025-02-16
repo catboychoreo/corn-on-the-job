@@ -1,7 +1,13 @@
 let homeButton = document.getElementById("home")
 
 homeButton.onclick = function(){
-    window.location = "../student%20home/studenthome.html"
+    window.location = "/"
+}
+
+let logOutButton = document.getElementById("student-logout")
+
+logOutButton.onclick = function(){
+    window.location = "/signin"
 }
 
 let uploadFileButton = document.getElementById("resume-upload")
