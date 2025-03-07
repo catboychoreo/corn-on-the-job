@@ -1,7 +1,7 @@
 let homeButton = document.getElementById("home")
 
 homeButton.onclick = function(){
-    window.location = "/"
+    window.location = "/student"
 }
 
 let logOutButton = document.getElementById("student-logout")

@@ -5,12 +5,12 @@
         <link href="/static/signin.css" rel="stylesheet">
     </head>
     <body>
-        <div id="sign-in">
+        <form id="sign-in" method="post">
             <p id="text">Log into Corn on the Job</p>
-            <input id="username" placeholder="Username">
-            <input type="password" id="password" placeholder="Password">
-            <button id="log-in">Log in</button>
-        </div>
+            <input id="username" placeholder="Username" name="username">
+            <input type="password" id="password" placeholder="Password" name="password">
+            <input type="submit" id="log-in" value="Log in">
+        </form>
 
     </body>
 </html>

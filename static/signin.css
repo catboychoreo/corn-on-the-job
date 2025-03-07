@@ -36,4 +36,5 @@ button:hover {
     padding: 5px;
     background-color: #bedc74;
     font-weight: bold;
+    display: block;
 }
