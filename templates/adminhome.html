@@ -4,6 +4,7 @@
     <title>Corn on the Job</title>
 
     <link href="/static/student/studenthome.css" rel="stylesheet">
+    <link href="/static/admin/adminhome.css" rel="stylesheet">
 </head>
 
 <body>
@@ -14,8 +15,8 @@
         <img src="/static/images/corn.png" id="logo">
 
         <button id="home">Home</button>
-        <button id="post">Create a job listing</button>
-        <button id="employer-logout">Log out of employer account</button>
+        <button id="review">Review pending job listings</button>
+        <button id="admin-logout">Log out of admin account</button>
 
     </div>
 
@@ -36,6 +37,11 @@
                 <div id="job-info">
                     <p id="job-title">{{list[1]}}</p>
                     <p id="job-desc">{{list[2]}}</p>
+                    
+                    <form id="delete-post">
+                        <button id="delete">Delete posting</button>
+                        <input type="hidden" name="post-id" value="{{list[0]}}">
+                    </form>
                 </div>
             </div>
             {% endfor %}
@@ -45,6 +51,6 @@
 
 
 </body>
-<script src="/static/employer/employerhome.js"></script>
+<script src="/static/student/studenthome.js"></script>
 
 </html>

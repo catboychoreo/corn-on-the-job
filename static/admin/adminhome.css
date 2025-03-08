@@ -1,0 +1,16 @@
+#delete {
+    background-color: #cc6922;
+    width: 150px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: large;
+    font-weight: bold;
+    position: absolute;
+    right: 45px;
+    bottom: 5px;
+}
+
+#delete:hover {
+    background-color: red !important;
+    transition: background-color 0.2s;
+}

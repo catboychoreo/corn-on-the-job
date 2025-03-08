@@ -92,6 +92,26 @@ def employer_post():
     get_db().commit()
     return render_template("employerpost.html")
 
+@app.route("/admin")
+def admin_home():
+    job_query = request.args.get("query")
+
+    if job_query:
+        job_query = job_query + "%"
+        cursor = get_db().execute(
+            "SELECT id,job_title,description,company,logo FROM JOBS WHERE (job_title LIKE ? OR company LIKE ?) AND approved=1",
+            (
+                job_query,
+                job_query,
+            ),
+        )
+    else:
+        cursor = get_db().execute(
+            "SELECT id,job_title,description,company,logo FROM JOBS WHERE approved=1"
+        )
+
+    data = cursor.fetchall()
+    return render_template("adminhome.html", data=data)
 
 @app.route("/")
 def go_sign():
@@ -111,6 +131,8 @@ def get_in():
         return redirect("/student")
     elif username == "employer" and password == "employer":
         return redirect("/employer")
+    elif username =="admin" and password == "admin":
+        return redirect("/admin")
     else:
         return redirect("/signin")
 
