@@ -20,7 +20,7 @@ button:hover {
     border: #387f39 solid 5px;
 }
 
-#sidebar > button {
+#sidebar>button {
     border-radius: 10px;
     border: #387f39 5px solid;
     padding: 5px;
@@ -37,7 +37,7 @@ button:hover {
     width: 50%;
 }
 
-#sidebar > button {
+#sidebar>button {
     margin-bottom: 10px;
 }
 
@@ -63,7 +63,7 @@ button:hover {
     width: 70%;
     height: 40%;
     padding: 5px;
-    font-size:medium;
+    font-size: medium;
 }
 
 #searchbar::placeholder {

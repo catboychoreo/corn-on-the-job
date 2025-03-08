@@ -1,39 +1,45 @@
 <html>
-    <head>
-        <title>Corn on the Job</title>
-        
-        <link href="/static/studentapply.css" rel="stylesheet">
-    </head>
-    <body>
-        <div id="sidebar">
-            <p id="cotj">Corn on the Job</p>
 
-            <img src="/static/corn.png" id="logo">
+<head>
+    <title>Corn on the Job</title>
 
-            <button id="home">Home</button>
-            <button id="employer">Log out of employer account</button>
+    <link href="/static/employerpost.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="sidebar">
+        <p id="cotj">Corn on the Job</p>
+
+        <img src="/static/corn.png" id="logo">
+
+        <button id="home">Home</button>
+        <button id="employer-logout">Log out of employer account</button>
+
+    </div>
+
+    <form id="main-page" method="post" enctype="multipart/form-data">
+        <div id="post">
+            <input id="job-title" placeholder="Enter your job/position's title" name="job-title">
+            <textarea id="job-desc" placeholder="Enter a brief description of the position you are hiring for"
+                name="job-description"></textarea>
+            <div id="job-info">
+                <div id="logo-upload">
+                    <p id="instructions">Upload a logo of your company here. Will be displayed as a 100x100 image.</p>
+                    <img id="preview-img" style="display:none" src="/static/images/placeholder.webp">
+                    <input type="file" id="logo-file" name="logo" accept="image/*">
+                </div>
+                <div id="contact-info">
+                    <input id="company-name" placeholder="Enter company name" name="company">
+                    <input type="email" id="email" placeholder="Enter email to recieve applications">
+                </div>
+            </div>
+
+            <input id="submit" value="Submit post for review" type="submit">
 
         </div>
+    </form>
 
-        <form id="main-page">
-            <div id="post">
-                <input id="job-title" placeholder="Enter your job/position's title">
-                <textarea id="applicant-exp" placeholder="Enter a brief description of your job experience here that may summarize your resume"></textarea>
+</body>
+<script src="/static/employerpost.js"></script>
 
-                <div id="application-info">
-                    <button id="resume-upload">Upload resume here</button>
-                    <input type="file" id="resume-file">
-                    <div id="contact-info">
-                        <input type="tel" id="phone-number" placeholder="Enter phone number">
-                        <input type="email" id="email" placeholder="Enter email">
-                    </div>
-                </div>
-
-                <button id="submit">Submit application</button>
-
-            </div>
-        </form>
-
-    </body>
-    <script src="/static/studentapply.js"></script>
 </html>

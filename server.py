@@ -20,26 +20,29 @@ def student_home():
     if job_query:
         job_query = job_query + "%"
         cursor = get_db().execute(
-            "SELECT id,job_title,description,company,logo FROM JOBS WHERE job_title LIKE ? OR company LIKE ?",
+            "SELECT id,job_title,description,company,logo FROM JOBS WHERE (job_title LIKE ? OR company LIKE ?) AND approved=1",
             (
                 job_query,
                 job_query,
             ),
         )
     else:
-        cursor = get_db().execute("SELECT id,job_title,description,company,logo FROM JOBS")
+        cursor = get_db().execute(
+            "SELECT id,job_title,description,company,logo FROM JOBS WHERE approved=1"
+        )
 
     data = cursor.fetchall()
     return render_template("studenthome.html", data=data)
 
 
-@app.route("/apply/<int:job_id>")
+@app.route("/student/apply/<int:job_id>")
 def student_apply(job_id):
     cursor = get_db().execute(
         "SELECT id,job_title,description,company FROM JOBS WHERE id=?", (job_id,)
     )
     data = cursor.fetchone()
     return render_template("studentapply.html", data=data)
+
 
 @app.route("/employer")
 def employer_home():
@@ -48,17 +51,46 @@ def employer_home():
     if job_query:
         job_query = job_query + "%"
         cursor = get_db().execute(
-            "SELECT id,job_title,description,company,logo FROM JOBS WHERE job_title LIKE ? OR company LIKE ?",
+            "SELECT id,job_title,description,company,logo FROM JOBS WHERE (job_title LIKE ? OR company LIKE ?) AND approved=1",
             (
                 job_query,
                 job_query,
             ),
         )
     else:
-        cursor = get_db().execute("SELECT id,job_title,description,company,logo FROM JOBS")
+        cursor = get_db().execute(
+            "SELECT id,job_title,description,company,logo FROM JOBS WHERE approved=1"
+        )
 
     data = cursor.fetchall()
     return render_template("employerhome.html", data=data)
+
+
+@app.route("/employer/post")
+def go_employ():
+    return render_template("employerpost.html")
+
+
+@app.route("/employer/post", methods=["POST"])
+def employer_post():
+    job_title = request.form.get("job-title")
+    job_desc = request.form.get("job-description")
+    company = request.form.get("company")
+    logo_file = request.files["logo"]
+    logo_file.save("static/images/" + logo_file.filename)
+
+    cursor = get_db().execute(
+        "INSERT INTO jobs (job_title,description,company,logo) VALUES (?,?,?,?)",
+        (
+            job_title,
+            job_desc,
+            company,
+            logo_file.filename,
+        ),
+    )
+
+    get_db().commit()
+    return render_template("employerpost.html")
 
 
 @app.route("/")

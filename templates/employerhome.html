@@ -1,47 +1,50 @@
 <html>
-    <head>
-        <title>Corn on the Job</title>
-        
-        <link href="/static/studenthome.css" rel="stylesheet">
-    </head>
-    <body>
 
-        <div id="sidebar">
-            <p id="cotj">Corn on the Job</p>
+<head>
+    <title>Corn on the Job</title>
 
-            <img src="/static/corn.png" id="logo">
+    <link href="/static/studenthome.css" rel="stylesheet">
+</head>
 
-            <button id="home">Home</button>
-            <button id="post">Create a job listing</button>
-            <button id="employer-logout">Log out of employer account</button>
+<body>
 
-        </div>
+    <div id="sidebar">
+        <p id="cotj">Corn on the Job</p>
 
-        <div id="main-page">
+        <img src="/static/corn.png" id="logo">
 
-            <form id="searchbar-holder">
-                <input id="searchbar" placeholder="Type to begin search..." name="query"></input>
-            </form>
-            
-            <div id="lots-of-postings">
-                {% for list in data %}
-                <div class="postings">
-                    <div id="company-info">
-                        <img src="/static/images/{{list[4]}}" id="company-pic">
-                        <p id="company-name">{{list[3]}}</p>
-                    </div>
-        
-                    <div id="job-info">
-                        <p id="job-title">{{list[1]}}</p>
-                        <p id="job-desc">{{list[2]}}</p>
-                    </div>
+        <button id="home">Home</button>
+        <button id="post">Create a job listing</button>
+        <button id="employer-logout">Log out of employer account</button>
+
+    </div>
+
+    <div id="main-page">
+
+        <form id="searchbar-holder">
+            <input id="searchbar" placeholder="Type to begin search..." name="query"></input>
+        </form>
+
+        <div id="lots-of-postings">
+            {% for list in data %}
+            <div class="postings">
+                <div id="company-info">
+                    <img src="/static/images/{{list[4]}}" id="company-pic">
+                    <p id="company-name">{{list[3]}}</p>
                 </div>
-                {% endfor %}
+
+                <div id="job-info">
+                    <p id="job-title">{{list[1]}}</p>
+                    <p id="job-desc">{{list[2]}}</p>
+                </div>
             </div>
-
+            {% endfor %}
         </div>
-    
 
-    </body>
-    <script src="/static/employerhome.js"></script>
+    </div>
+
+
+</body>
+<script src="/static/employerhome.js"></script>
+
 </html>

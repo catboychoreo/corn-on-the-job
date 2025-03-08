@@ -49,7 +49,7 @@ button:hover {
     justify-content: center;
 }
 
-#application {
+#post {
     margin-top: 10px;
     display: flex;
     background-color: #f6e96e;
@@ -73,7 +73,12 @@ button:hover {
     padding: 5px;
 }
 
-#applicant-exp {
+#job-title::placeholder {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+#job-desc {
     border-radius: 10px;
     border: #387f39 5px solid;
     padding: 5px;
@@ -81,25 +86,37 @@ button:hover {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#applicant-exp::placeholder {
+#job-desc::placeholder {
     font-family: Arial, Helvetica, sans-serif;
     color: black;
 }
 
-#application-info {
+#job-info {
     display: flex;
     justify-content: space-between;
 }
 
-#resume-upload {
+#logo-upload {
     border-radius: 10px;
     border: #387f39 5px solid;
     padding: 5px;
     background-color: #bedc74;
     font-weight: bold;
+    width: 100px;
+    height: 100px;
+    font-size: 12px;
+    text-align: center;
+    align-content: center;
+    cursor: pointer;
+    user-select: none;
 }
 
-#resume-file {
+#preview-img {
+    width: 100px;
+    height: 100px;
+}
+
+#logo-file {
     display: none;
 }
 
@@ -107,9 +124,10 @@ button:hover {
     display: flex;
     flex-direction: column;
     gap: 2px;
+    width: 300px;
 }
 
-#phone-number {
+#company-name {
     border-radius: 5px;
     border: #387f39 2px solid;
 }
@@ -130,4 +148,5 @@ button:hover {
     position: absolute;
     bottom: 5px;
     right: 15px;
+    white-space: normal;
 }
