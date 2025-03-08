@@ -53,6 +53,7 @@ button:hover {
     align-items: center;
     justify-content: center;
     min-height: 100px;
+    margin-block-end: 0;
 }
 
 #searchbar {
@@ -98,8 +99,14 @@ button:hover {
     position: relative;
 }
 
+#company-info {
+    max-width: 100px;
+    margin-right: 10px;
+}
+
 #company-pic {
-    height: 40%;
+    width: 100px;
+    height: 100px;
 }
 
 #apply {
