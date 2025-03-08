@@ -1,9 +1,3 @@
-let applyButton = document.getElementById("apply")
-
-applyButton.onclick = function() {
-    window.location = "/apply"
-}
-
 let homeButton = document.getElementById("home")
 
 homeButton.onclick = function(){
