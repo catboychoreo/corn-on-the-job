@@ -92,6 +92,7 @@ def employer_post():
     get_db().commit()
     return render_template("employerpost.html")
 
+
 @app.route("/admin")
 def admin_home():
     job_query = request.args.get("query")
@@ -113,6 +114,28 @@ def admin_home():
     data = cursor.fetchall()
     return render_template("adminhome.html", data=data)
 
+
+@app.route("/admin/delete", methods=["POST"])
+def delete_job():
+    post_id = request.form.get("post-id")
+
+    if post_id:
+        cursor = get_db().execute(
+            "DELETE FROM jobs WHERE id=?",
+            (post_id,),
+        )
+
+        if cursor.rowcount > 0:
+            get_db().commit()
+            print("Job deleted succesfully!")
+        else:
+            print("uh oh...")
+    else:
+        print("no job id!")
+
+    return redirect("/admin")
+
+
 @app.route("/")
 def go_sign():
     return redirect("/signin")
@@ -131,7 +154,7 @@ def get_in():
         return redirect("/student")
     elif username == "employer" and password == "employer":
         return redirect("/employer")
-    elif username =="admin" and password == "admin":
+    elif username == "admin" and password == "admin":
         return redirect("/admin")
     else:
         return redirect("/signin")
