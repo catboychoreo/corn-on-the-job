@@ -5,20 +5,23 @@ app = Flask(__name__)
 app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
-
+# gets the database from sql
 def get_db():
     db = getattr(g, "_database", None)
     if db is None:
         db = g._database = sqlite3.connect("main.db")
     return db
 
-
+# establishes the student home page 
 @app.route("/student")
 def student_home():
     job_query = request.args.get("query")
 
+    # makes search bar functional
     if job_query:
         job_query = job_query + "%"
+        
+        # shows the job titles/company names that match what the user has entered as a query
         cursor = get_db().execute(
             "SELECT id,job_title,description,company,logo FROM JOBS WHERE (job_title LIKE ? OR company LIKE ?) AND approved=1",
             (
@@ -27,6 +30,7 @@ def student_home():
             ),
         )
     else:
+        # returns normal homepage when no query is entered
         cursor = get_db().execute(
             "SELECT id,job_title,description,company,logo FROM JOBS WHERE approved=1"
         )
@@ -34,6 +38,7 @@ def student_home():
     data = cursor.fetchall()
     return render_template("studenthome.html", data=data)
 
+# creates different application pages for different job listings based off of their ids
 
 @app.route("/student/apply/<int:job_id>")
 def student_apply(job_id):
