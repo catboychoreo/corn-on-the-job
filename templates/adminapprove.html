@@ -43,7 +43,7 @@
                         <input type="hidden" name="deny-id" value="{{list[0]}}">
                     </form>
                     
-                    <form id="approve-post" action="/admin/approve" method="POST">
+                    <form id="approve-post" action="/admin/approve" method="POST" onsubmit="return jobApproved()">
                         <button id="approve">Approve posting</button>
                         <input type="hidden" name="approve-id" value="{{list[0]}}">
                     </form>
@@ -51,6 +51,10 @@
                 </div>
             </div>
             {% endfor %}
+
+            {% if not data %}
+            <p id="none-text">No jobs to review!</p>
+            {% endif %}
         </div>
 
     </div>
@@ -58,5 +62,6 @@
 
 </body>
 <script src="/static/admin/adminhome.js"></script>
+<script src="/static/admin/adminapprove.js"></script>
 
 </html>

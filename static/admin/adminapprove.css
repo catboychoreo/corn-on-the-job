@@ -29,3 +29,10 @@
     transition: background-color 0.2s;
 }
 
+#none-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+

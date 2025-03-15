@@ -1,3 +1,8 @@
+function submitPost() {
+    console.log("hiiii?")
+    return alert("Post submitted! It will be reviewed and upon approval will be made public for applicants.")
+}
+
 let homeButton = document.getElementById("home")
 
 homeButton.onclick = function () {
