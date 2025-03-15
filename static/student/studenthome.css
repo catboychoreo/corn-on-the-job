@@ -60,7 +60,7 @@ button:hover {
     background-color: #bedc74;
     border-color: #387f39;
     border-radius: 15px;
-    width: 70%;
+    width: 800px;
     height: 40%;
     padding: 5px;
     font-size: medium;
@@ -126,7 +126,16 @@ button:hover {
     background-color: #387f39;
 }
 
+#job-desc {
+    overflow-y: auto;
+}
+
 #job-title {
+    font-size: large;
+    font-weight: bold;
+}
+
+#company-name {
     font-size: large;
     font-weight: bold;
 }

@@ -82,8 +82,15 @@ def employer_post():
     company = request.form.get("company")
 
     # creates logo files for companies
-    logo_file = request.files["logo"]
-    logo_file.save("static/images/" + logo_file.filename)
+    if "logo" in request.files and request.files["logo"].filename: 
+        logo_file = request.files["logo"]
+        logo_file.save("static/images/" + logo_file.filename)
+        
+        file_name = logo_file.filename
+        
+    # if there is no logo, replace logo w/ placeholder image
+    else:
+        file_name = "placeholder.webp"
 
     # adds employer information to the database
     cursor = get_db().execute(
@@ -92,7 +99,7 @@ def employer_post():
             job_title,
             job_desc,
             company,
-            logo_file.filename,
+            file_name,
         ),
     )
 
@@ -164,6 +171,7 @@ def admin_review():
     data = cursor.fetchall()
     return render_template("adminapprove.html", data=data)    
 
+# will deny the post and delete it from the database
 @app.route("/admin/deny", methods=["POST"])
 def deny_job():
     post_id = request.form.get("deny-id")
@@ -181,6 +189,7 @@ def deny_job():
 
     return redirect("/admin/review")
 
+# approves the job and updates database to make the post approved
 @app.route("/admin/approve", methods=["POST"])
 def approve_job():
     post_id = request.form.get("approve-id")
