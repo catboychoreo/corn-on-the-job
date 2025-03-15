@@ -8,6 +8,12 @@ homeButton.onclick = function () {
     window.location = "/admin"
 }
 
+let reviewButton = document.getElementById("review")
+
+reviewButton.onclick = function () {
+    window.location = "/admin/review"
+}
+
 let logOutButton = document.getElementById("admin-logout")
 
 logOutButton.onclick = function () {
