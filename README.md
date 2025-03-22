@@ -1,5 +1,5 @@
 ## Developers
-Jamie Sipes & Van Din at Ruston High School
+Jamie Sipes & Van Din at Ruston High School Chapter #617 - Developed for 2025 FBLA Website Coding & Development 
 
 ## 🌽 About Corn on the Job
 COTJ is a job search application for students attending Ruston High School. The website is designed to support three different types of users, including students, employers, and administrators.
