@@ -20,7 +20,7 @@
 
     <form id="main-page" method="post" enctype="multipart/form-data" onsubmit="return submitPost()" autocomplete="off">
         <div id="post">
-            <input id="job-title" placeholder="Enter your job/position's title" name="job-title">
+            <input id="job-title" placeholder="Enter your job/position's title" name="job-title" autocomplete="off">
             <textarea id="job-desc" placeholder="Enter a brief description of the position you are hiring for"
                 name="job-description"></textarea>
             <div id="job-info">
@@ -30,8 +30,8 @@
                     <input type="file" id="logo-file" name="logo" accept="image/*">
                 </div>
                 <div id="contact-info">
-                    <input id="company-name" placeholder="Enter company name" name="company">
-                    <input type="email" id="email" placeholder="Enter email to recieve applications">
+                    <input id="company-name" placeholder="Enter company name" name="company" autocomplete="off">
+                    <input type="email" id="email" placeholder="Enter email to recieve applications" autocomplete="off">
                 </div>
             </div>
 
