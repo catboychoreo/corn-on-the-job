@@ -2,7 +2,7 @@
 Jamie Sipes & Van Din at Ruston High School Chapter #617 - Developed for 2025 FBLA Website Coding & Development 
 
 ## 🌽 About Corn on the Job
-COTJ is a job search application for students attending Ruston High School. The website is designed to support three different types of users, including students, employers, and administrators.
+Corn on the Job is a job search application for students attending Ruston High School. The website is designed to support three different types of users, including students, employers, and administrators. At Corn on the Job, our goal is to connect students with meaningful career opportunities by providing a user-friendly platform that makes the job search process simple, efficient, and accessible. We aim to **nurture** growth, **empower** talent, and **help individuals find their perfect job**, *one kernel at a time*.
 
 ## Student Features
 A student account may view approved job postings and apply for jobs. On applying, the employer will recieve application information. 
