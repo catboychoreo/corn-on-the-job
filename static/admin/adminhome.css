@@ -1,7 +1,7 @@
 #delete {
-    border: 5px solid red;
+    border: 3px solid rgb(120, 55, 44);
     border-radius: 10px;
-    background-color: rgb(253, 113, 88);
+    background-color: rgba(184, 105, 69, 0.959);
     width: 150px;
     margin-bottom: 10px;
     font-size: large;
@@ -12,6 +12,6 @@
 }
 
 #delete:hover {
-    background-color: red !important;
+    background-color: rgba(108, 2, 2, 0.934) !important;
     transition: background-color 0.2s;
 }

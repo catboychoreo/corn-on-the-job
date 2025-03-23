@@ -1,12 +1,12 @@
 body {
     display: flex;
     margin: 0px;
-    background-color: #bedc74;
+    background-color: #b4c273;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 button:hover {
-    background-color: #387f39 !important;
+    background-color: #4f603a !important;
     transition: background-color 0.2s;
 }
 
@@ -16,16 +16,18 @@ button:hover {
     padding: 5px;
     align-items: center;
     flex-direction: column;
-    background-color: #f6e96e;
-    border: #387f39 solid 5px;
+    background-image: linear-gradient(to bottom, rgb(245, 228, 135), rgba(234, 232, 172, 0.132));
+    border: #70821f 3px solid;
+    color: #2c3115;
 }
 
 #sidebar>button {
     border-radius: 10px;
-    border: #387f39 5px solid;
+    border: #70821f 3px solid;
     padding: 5px;
-    background-color: #bedc74;
+    background-color: #b4c273;
     font-weight: bold;
+    margin-top: 20px;
 }
 
 #cotj {
@@ -38,7 +40,7 @@ button:hover {
 }
 
 #sidebar>button {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 #main-page {
@@ -52,8 +54,8 @@ button:hover {
 #post {
     margin-top: 10px;
     display: flex;
-    background-color: #f6e96e;
-    border: #387f39 solid 5px;
+    background-image: linear-gradient(to right, rgb(245, 228, 135), rgba(234, 232, 172, 0.132));
+    border: #70821f 3px solid;
     width: 600px;
     height: 300px;
     border-radius: 30px;
@@ -67,20 +69,20 @@ button:hover {
 #job-title {
     font-size: large;
     font-weight: bold;
-    background-color: #bedc74;
+    background-color: #b4c273;
     border-radius: 10px;
-    border: #387f39 5px solid;
+    border: #70821f 3px solid;
     padding: 5px;
 }
 
 #job-title::placeholder {
     font-family: Arial, Helvetica, sans-serif;
-    color: black;
+    color: #2c3115;
 }
 
 #job-desc {
     border-radius: 10px;
-    border: #387f39 5px solid;
+    border: #70821f 3px solid;
     padding: 5px;
     height: 100px;
     font-family: Arial, Helvetica, sans-serif;
@@ -88,7 +90,7 @@ button:hover {
 
 #job-desc::placeholder {
     font-family: Arial, Helvetica, sans-serif;
-    color: black;
+    color: #2c3115;
 }
 
 #job-info {
@@ -98,9 +100,9 @@ button:hover {
 
 #logo-upload {
     border-radius: 10px;
-    border: #387f39 5px solid;
+    border: #70821f 3px solid;
     padding: 5px;
-    background-color: #bedc74;
+    background-color: #b4c273;
     font-weight: bold;
     width: 100px;
     height: 100px;
@@ -109,6 +111,7 @@ button:hover {
     align-content: center;
     cursor: pointer;
     user-select: none;
+    color: #2c3115;
 }
 
 #preview-img {
@@ -129,19 +132,19 @@ button:hover {
 
 #company-name {
     border-radius: 5px;
-    border: #387f39 2px solid;
+    border: #70821f 3px solid;
 }
 
 #email {
     border-radius: 5px;
-    border: #387f39 2px solid;
+    border: #70821f 3px solid;
 }
 
 #submit {
     width: 150px;
-    border: 5px solid #387f39;
+    border: #70821f 3px solid;
     border-radius: 10px;
-    background-color: #bedc74;
+    background-color: #b4c273;
     margin-bottom: 10px;
     font-size: large;
     font-weight: bold;
@@ -149,4 +152,5 @@ button:hover {
     bottom: 5px;
     right: 15px;
     white-space: normal;
+    color: #2c3115;
 }
