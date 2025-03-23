@@ -4,6 +4,7 @@
     <title>Corn on the Job</title>
 
     <link href="/static/student/studentapply.css" rel="stylesheet">
+    <link rel="icon" href="/static/images/corn.png">
 </head>
 
 <body>
@@ -25,14 +26,14 @@
 
             <div id="application-info">
                 <button id="resume-upload">Upload resume here</button>
-                <input type="file" id="resume-file">
+                <input type="file" id="resume-file" accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.pdf">
                 <div id="contact-info">
                     <input type="tel" id="phone-number" placeholder="Enter phone number">
                     <input type="email" id="email" placeholder="Enter email">
                 </div>
             </div>
 
-            <button id="submit">Submit application</button>
+            <button id="submit" onclick="return applicationSubmitted()">Submit application</button>
 
         </div>
     </div>

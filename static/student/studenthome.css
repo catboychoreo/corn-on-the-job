@@ -1,31 +1,33 @@
 body {
     display: flex;
     margin: 0px;
-    background-color: #bedc74;
+    background-color: #b4c273;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 button:hover {
-    background-color: #387f39 !important;
+    background-color: #4f603a !important;
     transition: background-color 0.2s;
 }
 
 #sidebar {
     display: flex;
-    width: 250px;
+    width: 200px;
     padding: 5px;
     align-items: center;
     flex-direction: column;
-    background-color: #f6e96e;
-    border: #387f39 solid 5px;
+    background-image: linear-gradient(to bottom, rgb(245, 228, 135), rgba(234, 232, 172, 0.132));
+    border: #4f603a solid 2px;
 }
 
 #sidebar>button {
     border-radius: 10px;
-    border: #387f39 5px solid;
-    padding: 5px;
-    background-color: #bedc74;
+    border: #4f603a 3px solid;
+    padding: 7px;
+    background-color: #b4c273;
     font-weight: bold;
+    margin-top: 20px;
+    color: #2c3115;
 }
 
 #cotj {
@@ -38,7 +40,7 @@ button:hover {
 }
 
 #sidebar>button {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 #main-page {
@@ -48,7 +50,7 @@ button:hover {
 }
 
 #searchbar-holder {
-    background-color: #387f39;
+    background-image: linear-gradient(to right, rgba(26, 71, 15, 0.913), rgba(123, 185, 103, 0.824));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,10 +59,10 @@ button:hover {
 }
 
 #searchbar {
-    background-color: #bedc74;
-    border-color: #387f39;
+    background-image: linear-gradient(to right, rgb(245, 228, 135), rgba(164, 206, 113, 0.653));
+    border-color: #43621a;
     border-radius: 15px;
-    width: 70%;
+    width: 800px;
     height: 40%;
     padding: 5px;
     font-size: medium;
@@ -68,7 +70,7 @@ button:hover {
 
 #searchbar::placeholder {
     font-family: Arial, Helvetica, sans-serif;
-    color: black;
+    color: rgba(0, 0, 0, 0.566);
 }
 
 #lots-of-postings {
@@ -90,11 +92,11 @@ button:hover {
 .postings {
     margin-top: 10px;
     display: flex;
-    background-color: #f6e96e;
-    border: #387f39 solid 5px;
+    background-image: linear-gradient(to right, rgb(245, 228, 135), rgba(234, 232, 172, 0.132));
+    border: #70821f solid 3px;
     width: 750px;
     height: 280px;
-    border-radius: 30px;
+    border-radius: 15px;
     padding: 10px;
     position: relative;
 }
@@ -102,6 +104,7 @@ button:hover {
 #company-info {
     max-width: 100px;
     margin-right: 10px;
+    color: #2c3115;
 }
 
 #company-pic {
@@ -111,22 +114,36 @@ button:hover {
 
 #apply {
     width: 150px;
-    border: 5px solid #387f39;
+    height: 38px;
+    border: 3px solid #70821fc2;
     border-radius: 10px;
-    background-color: #bedc74;
+    background-color: #a3b165;
     margin-bottom: 10px;
     font-size: large;
     font-weight: bold;
     position: absolute;
     right: 45px;
     bottom: 5px;
+    color: #2c3115;
 }
 
 #apply:hover {
-    background-color: #387f39;
+    background-color: #394e22;
+}
+
+#job-desc {
+    overflow-y: auto;
+    color: #2c3115;
 }
 
 #job-title {
     font-size: large;
     font-weight: bold;
+    color: #2c3115;
+}
+
+#company-name {
+    font-size: large;
+    font-weight: bold;
+    color: #2c3115;
 }

@@ -1,3 +1,8 @@
+function applicationSubmitted() {
+    alert("Application has been submitted!")
+    window.location = "/student"
+}
+
 let homeButton = document.getElementById("home")
 
 homeButton.onclick = function () {
@@ -15,4 +20,8 @@ let realUploadFileButton = document.getElementById("resume-file")
 
 uploadFileButton.onclick = function () {
     realUploadFileButton.click()
+}
+
+realUploadFileButton.onchange = function () {
+    uploadFileButton.innerText = "Resume uploaded!"
 }
