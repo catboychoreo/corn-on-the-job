@@ -9,7 +9,7 @@ homeButton.onclick = function () {
     window.location = "/employer"
 }
 
-let logOutButton = document.getElementById("employer-logout")
+let logOutButton = document.getElementById("logout")
 
 logOutButton.onclick = function () {
     window.location = "/signin"

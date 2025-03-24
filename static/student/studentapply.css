@@ -18,6 +18,7 @@ button:hover {
     flex-direction: column;
     background-image: linear-gradient(to bottom, rgb(245, 228, 135), rgba(234, 232, 172, 0.132));
     border: #70821f solid 5px;
+    position: relative;
 }
 
 #sidebar>button {
@@ -26,12 +27,13 @@ button:hover {
     padding: 5px;
     background-color: #b4c273;
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 #cotj {
-    font-size: large;
-    font-weight: bold;
+    font-size: 25px;
+    color: #2c3115;
+    font-family: "soopafresh", sans-serif;
 }
 
 #logo {
@@ -39,7 +41,8 @@ button:hover {
 }
 
 #sidebar>button {
-    margin-bottom: 20px;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 #main-page {

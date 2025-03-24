@@ -10,7 +10,7 @@ postButton.onclick = function () {
     window.location = "/employer/post"
 }
 
-let logOutButton = document.getElementById("employer-logout")
+let logOutButton = document.getElementById("logout")
 
 logOutButton.onclick = function () {
     window.location = "/signin"

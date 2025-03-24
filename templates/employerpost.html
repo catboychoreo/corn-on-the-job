@@ -4,7 +4,9 @@
     <title>Corn on the Job</title>
 
     <link href="/static/employer/employerpost.css" rel="stylesheet">
+    <link href="/static/icons.css" rel="stylesheet">
     <link rel="icon" href="/static/images/corn.png">
+    <script src="https://kit.fontawesome.com/ccd8cc66d9.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -13,8 +15,17 @@
 
         <img src="/static/images/corn.png" id="logo">
 
-        <button id="home">Home</button>
-        <button id="employer-logout">Log out of employer account</button>
+        <button id="home">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </button>
+        <button id="logout"><i class="fa-solid fa-arrow-left"></i>
+            Log out
+        </button>
+        <div id="user-info">
+            <i class="fa-solid fa-user-tie"></i>
+            <span>Employer</span>
+        </div>
 
     </div>
 

@@ -5,7 +5,9 @@
 
     <link href="/static/student/studenthome.css" rel="stylesheet">
     <link href="/static/admin/adminhome.css" rel="stylesheet">
+    <link href="/static/icons.css" rel="stylesheet">
     <link rel="icon" href="/static/images/corn.png">
+    <script src="https://kit.fontawesome.com/ccd8cc66d9.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -15,9 +17,21 @@
 
         <img src="/static/images/corn.png" id="logo">
 
-        <button id="home">Home</button>
-        <button id="review">Review pending job listings</button>
-        <button id="admin-logout">Log out of admin account</button>
+        <button id="home">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </button>
+        <button id="review"> 
+            <i class="fa-solid fa-spinner"></i>
+            Review pending job listings
+        </button>
+        <button id="logout"><i class="fa-solid fa-arrow-left"></i>
+            Log out
+        </button>
+        <div id="user-info">
+            <i class="fa-solid fa-user-gear"></i>
+            <span>Admin</span>
+        </div>
 
     </div>
 
@@ -38,7 +52,7 @@
                 <div id="job-info">
                     <p id="job-title">{{list[1]}}</p>
                     <p id="job-desc">{{list[2]}}</p>
-                    
+
                     <form id="delete-post" action="/admin/delete" method="POST" onsubmit="return confirmDeletion()">
                         <button id="delete">Delete posting</button>
                         <input type="hidden" name="post-id" value="{{list[0]}}">

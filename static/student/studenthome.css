@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "soopafresh";
+    src: url(/static/fonts/soopafre.ttf);
+}
+
 body {
     display: flex;
     margin: 0px;
@@ -18,6 +23,7 @@ button:hover {
     flex-direction: column;
     background-image: linear-gradient(to bottom, rgb(245, 228, 135), rgba(234, 232, 172, 0.132));
     border: #4f603a solid 2px;
+    position: relative;
 }
 
 #sidebar>button {
@@ -26,13 +32,14 @@ button:hover {
     padding: 7px;
     background-color: #b4c273;
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: 10px;
     color: #2c3115;
 }
 
 #cotj {
-    font-size: large;
-    font-weight: bold;
+    font-size: 25px;
+    color: #2c3115;
+    font-family: "soopafresh", sans-serif;
 }
 
 #logo {
@@ -40,7 +47,8 @@ button:hover {
 }
 
 #sidebar>button {
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #main-page {

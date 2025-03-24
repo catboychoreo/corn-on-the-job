@@ -4,7 +4,9 @@
     <title>Corn on the Job</title>
 
     <link href="/static/student/studentapply.css" rel="stylesheet">
+    <link href="/static/icons.css" rel="stylesheet">
     <link rel="icon" href="/static/images/corn.png">
+    <script src="https://kit.fontawesome.com/ccd8cc66d9.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -13,8 +15,17 @@
 
         <img src="/static/images/corn.png" id="logo">
 
-        <button id="home">Home</button>
-        <button id="student-logout">Log out of student account</button>
+        <button id="home">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </button>
+        <button id="logout"><i class="fa-solid fa-arrow-left"></i>
+            Log out
+        </button>
+        <div id="user-info">
+            <i class="fa-solid fa-user"></i>
+            <span>Student</span>
+        </div>
 
     </div>
 
@@ -26,7 +37,8 @@
 
             <div id="application-info">
                 <button id="resume-upload">Upload resume here</button>
-                <input type="file" id="resume-file" accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.pdf">
+                <input type="file" id="resume-file"
+                    accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.pdf">
                 <div id="contact-info">
                     <input type="tel" id="phone-number" placeholder="Enter phone number" autocomplete="off">
                     <input type="email" id="email" placeholder="Enter email" autocomplete="off">

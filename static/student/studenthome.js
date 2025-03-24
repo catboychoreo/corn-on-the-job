@@ -4,7 +4,7 @@ homeButton.onclick = function () {
     window.location = "/student"
 }
 
-let logOutButton = document.getElementById("student-logout")
+let logOutButton = document.getElementById("logout")
 
 logOutButton.onclick = function () {
     window.location = "/signin"
