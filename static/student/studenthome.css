@@ -67,18 +67,31 @@ button:hover {
 }
 
 #searchbar {
-    background-image: linear-gradient(to right, rgb(245, 228, 135), rgba(164, 206, 113, 0.653));
-    border-color: #43621a;
-    border-radius: 15px;
-    width: 800px;
-    height: 40%;
-    padding: 5px;
+    /* Make the actual input invisible except for the letters */
+    border: none;
+    background-color: transparent;
+    outline: none;
+    flex-grow: 1;
     font-size: medium;
 }
 
 #searchbar::placeholder {
     font-family: Arial, Helvetica, sans-serif;
     color: rgba(0, 0, 0, 0.566);
+}
+
+#searchbar-container {
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(to right, rgb(245, 228, 135), rgba(164, 206, 113, 0.653));
+    border: 3px solid #43621a;
+    border-radius: 15px;
+    width: 800px;
+    height: 40%;
+}
+
+#searchbar-container i {
+    margin-left: 6px;
 }
 
 #lots-of-postings {
