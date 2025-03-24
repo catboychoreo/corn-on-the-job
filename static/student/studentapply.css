@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "soopafresh";
+    src: url(/static/fonts/soopafre.ttf);
+}
+
 body {
     display: flex;
     margin: 0px;
