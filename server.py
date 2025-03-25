@@ -19,7 +19,7 @@ def student_home():
 
     # makes search bar functional
     if job_query:
-        job_query = job_query + "%"
+        job_query = "%" + job_query + "%"
         
         # shows the job titles/company names that match what the user has entered as a query
         cursor = get_db().execute(
