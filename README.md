@@ -39,7 +39,6 @@ We use various logos and descriptions of jobs from these companies to display po
 - [Office Depot](https://www.indeed.com/viewjob?jk=5366ea078dc889a4&from=shareddesktop_copy)
 - [Peachtree Dental](https://www.indeed.com/viewjob?jk=c1a8f4250e0d43c9&from=shareddesktop_copy)
 - [Petsense](https://www.indeed.com/viewjob?jk=9c1f675aa6a0319a&from=shareddesktop_copy)
-- Pro Waste Services
 - [Rainbow](https://www.indeed.com/viewjob?jk=9d97f95603a4dea1&from=shareddesktop_copy)
 - [Servicemaster Clean](https://www.indeed.com/viewjob?jk=a54513f85b95a59d&from=shareddesktop_copy)
 - [Take 5 Oil Change](https://www.indeed.com/viewjob?jk=19f391b0d103b465&from=shareddesktop_copy)
