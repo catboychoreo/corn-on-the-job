@@ -26,14 +26,14 @@ An admin account holds the most power over COTJ. They have access to a backend p
 - Python
 - SQLite
 
-## Icons/Pictures 
+## Companies Used & Sources
 The logo for COTJ is from [pngtree](https://pngtree.com/freepng/cartoon-corn_8733013.html).
 
-We use various logos from these companies to display potential job listings:
+We use various logos and descriptions of jobs from these companies to display potential job listings (found on Indeed):
 - [Starbucks](https://www.indeed.com/viewjob?jk=97de534844035712&from=shareddesktop_copy)
 - [Raising Canes's](https://www.indeed.com/viewjob?jk=ad0f44add5f163cd&from=shareddesktop_copy)
 - [City Gear](https://www.indeed.com/viewjob?jk=ad4c153b41df8a8d&from=shareddesktop_copy)
-- [Critter Control](https://www.linkedin.com/jobs/view/wildlife-repair-exclusion-technician-at-critter-control-4173163878/?refId=tnNJyHKfL14QIFJjWal6%2Fg%3D%3D&    trackingId=SCIspjRJfWqeXuXvUOKdyA%3D%3D)
+- [Critter Control](https://www.linkedin.com/jobs/view/wildlife-repair-exclusion-technician-at-critter-control-4173163878/?refId=tnNJyHKfL14QIFJjWal6%2Fg%3D%3D&trackingId=SCIspjRJfWqeXuXvUOKdyA%3D%3D)
 - [Honey Bucket](https://www.indeed.com/cmp/Honey-Bucket-1/jobs?jk=dd85990bb3db27c5&start=0)
 - [United Rentals](https://www.indeed.com/viewjob?jk=2a9961bb9bbc7f4a&from=shareddesktop_copy)
 - [Office Depot](https://www.indeed.com/viewjob?jk=5366ea078dc889a4&from=shareddesktop_copy)
