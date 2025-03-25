@@ -30,20 +30,20 @@ An admin account holds the most power over COTJ. They have access to a backend p
 The logo for COTJ is from [pngtree](https://pngtree.com/freepng/cartoon-corn_8733013.html).
 
 We use various logos from these companies to display potential job listings:
-- Starbucks
-- Raising Canes's
-- City Gear
-- Critter Control
-- Honey Bucket
-- United Rentals
-- Office Depot
-- Peachtree Dental
-- Petsense
+- [Starbucks](https://www.indeed.com/viewjob?jk=97de534844035712&from=shareddesktop_copy)
+- [Raising Canes's](https://www.indeed.com/viewjob?jk=ad0f44add5f163cd&from=shareddesktop_copy)
+- [City Gear](https://www.indeed.com/viewjob?jk=ad4c153b41df8a8d&from=shareddesktop_copy)
+- [Critter Control](https://www.linkedin.com/jobs/view/wildlife-repair-exclusion-technician-at-critter-control-4173163878/?refId=tnNJyHKfL14QIFJjWal6%2Fg%3D%3D&    trackingId=SCIspjRJfWqeXuXvUOKdyA%3D%3D)
+- [Honey Bucket](https://www.indeed.com/cmp/Honey-Bucket-1/jobs?jk=dd85990bb3db27c5&start=0)
+- [United Rentals](https://www.indeed.com/viewjob?jk=2a9961bb9bbc7f4a&from=shareddesktop_copy)
+- [Office Depot](https://www.indeed.com/viewjob?jk=5366ea078dc889a4&from=shareddesktop_copy)
+- [Peachtree Dental](https://www.indeed.com/viewjob?jk=c1a8f4250e0d43c9&from=shareddesktop_copy)
+- [Petsense](https://www.indeed.com/viewjob?jk=9c1f675aa6a0319a&from=shareddesktop_copy)
 - Pro Waste Services
-- Rainbow
-- Servicemaster Clean
-- Take 5 Oil Change
-- Tractor Supply
+- [Rainbow](https://www.indeed.com/viewjob?jk=9d97f95603a4dea1&from=shareddesktop_copy)
+- [Servicemaster Clean](https://www.indeed.com/viewjob?jk=a54513f85b95a59d&from=shareddesktop_copy)
+- [Take 5 Oil Change](https://www.indeed.com/viewjob?jk=19f391b0d103b465&from=shareddesktop_copy)
+- [Tractor Supply](https://www.indeed.com/viewjob?jk=c996671d59d9c92a&from=shareddesktop_copy)
 
 A large majority of these companies have locations in Ruston!
 
