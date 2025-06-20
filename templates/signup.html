@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>Sign Up - Corn on the Job</title>
+    <link href="/static/sign in/signin.css" rel="stylesheet">
+    <link rel="icon" href="/static/images/corn.png">
+</head>
+<body>
+    <form id="sign-in" method="post" action="/signup">
+        <p id="text">Create a Corn on the Job Account</p>
+        <input id="username" placeholder="Username" name="username" autocomplete="off" required>
+        <input type="password" id="password" placeholder="Password" name="password" autocomplete="off" required>
+        <select name="user_type" style="margin-bottom: 10px;">
+            <option value="student">Student</option>
+            <option value="employer">Employer</option>
+        </select>
+        <input type="submit" id="log-in" value="Sign Up">
+        <p>Already have an account? <a href="/signin">Log in</a></p>
+    </form>
+</body>
+</html>

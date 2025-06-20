@@ -20,22 +20,17 @@
             <i class="fa-solid fa-house"></i>
             <span>Home</span>
         </button>
-        <button id="post">
-            <i class="fa-solid fa-pen-to-square"></i>
-            Create a job listing
-        </button>
-        <button id="mypostings">
-            <i class="fa-solid fa-list-check"></i>
-            <span>My Postings</span>
+        <button id="my-applications">
+            <i class="fa-solid fa-folder-open"></i>
+            <span>My Applications</span>
         </button>
         <button id="logout"><i class="fa-solid fa-arrow-left"></i>
             Log out
         </button>
         <div id="user-info">
-            <i class="fa-solid fa-user-tie"></i>
-            <span>Employer</span>
+            <i class="fa-solid fa-user"></i>
+            <span>Student</span>
         </div>
-
     </div>
 
     <div id="main-page">
@@ -48,6 +43,11 @@
         </form>
 
         <div id="lots-of-postings">
+
+            {% if not data %}
+            <p style="margin-top: 50px; font-size: larger; font-weight: bold;">You haven't applied for any jobs yet!</p>
+            {% endif %}
+
             {% for list in data %}
             <div class="postings">
                 <div id="company-info">
@@ -58,6 +58,8 @@
                 <div id="job-info">
                     <p id="job-title">{{list[1]}}</p>
                     <p id="job-desc">{{list[2]}}</p>
+
+                    <button id="apply" disabled style="background-color: #7a8b4a; cursor: not-allowed;">Applied</button>
                 </div>
             </div>
             {% endfor %}
@@ -65,8 +67,7 @@
 
     </div>
 
-
 </body>
-<script src="/static/employer/employerhome.js"></script>
+<script src="/static/student/studenthome.js"></script>
 
 </html>

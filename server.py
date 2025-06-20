@@ -1,9 +1,16 @@
-from flask import Flask, render_template, request, redirect, g
+from flask import Flask, render_template, request, redirect, g, session
 import sqlite3
+import os
+from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename # <-- And this
 
 app = Flask(__name__)
 app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
 app.config["TEMPLATES_AUTO_RELOAD"] = True
+app.secret_key = "Bila4EkX2X"
+app.config["UPLOAD_FOLDER"] = "static/resumes"
+
+os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
 
 # gets the database from sql
 def get_db():
@@ -47,6 +54,59 @@ def student_apply(job_id):
     data = cursor.fetchone()
     return render_template("studentapply.html", data=data)
 
+@app.route("/student/apply/submit/<int:job_id>", methods=["POST"])
+def submit_application(job_id):
+    if "user_id" not in session or session["user_type"] != "student":
+        return redirect("/signin")
+    
+    user_id = session["user_id"]
+
+    experience = request.form.get("applicant_experience")
+    phone = request.form.get("phone_number")
+    email = request.form.get("email")
+
+    # default to None if no resume is uploaded
+    resume_filename = None
+    if "resume" in request.files and request.files["resume"].filename != "":
+        resume_file = request.files["resume"]
+        # secure the filename to prevent security issues
+        filename = secure_filename(resume_file.filename)
+        resume_file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
+        resume_filename = filename
+
+    db = get_db()
+    db.execute(
+        """
+        INSERT INTO APPLICATIONS 
+        (user_id, job_id, experience_summary, phone_number, contact_email, resume_filename) 
+        VALUES (?, ?, ?, ?, ?, ?)
+        """,
+        (user_id, job_id, experience, phone, email, resume_filename)
+    )
+    db.commit()
+
+    return redirect("/student")
+
+@app.route("/student/myapplications")
+def my_applications():
+    if "user_id" not in session or session["user_type"] != "student":
+        return redirect("/signin")
+
+    user_id = session["user_id"]
+    
+    cursor = get_db().execute(
+        """
+        SELECT j.id, j.job_title, j.description, j.company, j.logo
+        FROM JOBS j
+        JOIN APPLICATIONS a ON j.id = a.job_id
+        WHERE a.user_id = ?
+        """,
+        (user_id,)
+    )
+    data = cursor.fetchall()
+    
+    return render_template("myapplications.html", data=data)
+
 
 @app.route("/employer")
 def employer_home():
@@ -80,6 +140,7 @@ def employer_post():
     job_title = request.form.get("job-title")
     job_desc = request.form.get("job-description")
     company = request.form.get("company")
+    user_id = session.get("user_id")
 
     # creates logo files for companies
     if "logo" in request.files and request.files["logo"].filename: 
@@ -94,17 +155,32 @@ def employer_post():
 
     # adds employer information to the database
     cursor = get_db().execute(
-        "INSERT INTO jobs (job_title,description,company,logo) VALUES (?,?,?,?)",
+        "INSERT INTO jobs (job_title, description, company, logo, user_id) VALUES (?, ?, ?, ?, ?)",
         (
             job_title,
             job_desc,
             company,
             file_name,
+            user_id,
         ),
     )
-
     get_db().commit()
     return render_template("employerpost.html")
+
+@app.route("/employer/mypostings")
+def my_postings():
+    if "user_id" not in session or session["user_type"] != "employer":
+        return redirect("/signin")
+
+    user_id = session["user_id"]
+
+    cursor = get_db().execute(
+        "SELECT id, job_title, description, company, logo, approved FROM JOBS WHERE user_id = ?",
+        (user_id,)
+    )
+    data = cursor.fetchall()
+
+    return render_template("mypostings.html", data=data)
 
 
 @app.route("/admin")
@@ -210,19 +286,59 @@ def sign_in():
     return render_template("signin.html")
 
 # sets usernames and passwords for student, admin and employer accounts
-@app.route("/signin", methods=["POST"])
+@app.route("/signin", methods=["GET", "POST"])
 def get_in():
-    username = request.form.get("username")
-    password = request.form.get("password")
-    if username == "student" and password == "student":
-        return redirect("/student")
-    elif username == "employer" and password == "employer":
-        return redirect("/employer")
-    elif username == "admin" and password == "admin":
-        return redirect("/admin")
-    else:
-        # when username/password doesn't match, refresh the page
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+        
+        db = get_db()
+        user = db.execute("SELECT * FROM USERS WHERE username = ?", (username,)).fetchone()
+
+        if user and check_password_hash(user[2], password):  # user[2] is the password column
+            session["user_id"] = user[0]  # user[0] is the id column
+            session["user_type"] = user[3] # user[3] is the user_type column
+
+            if session["user_type"] == "student":
+                return redirect("/student")
+            elif session["user_type"] == "employer":
+                return redirect("/employer")
+            elif session["user_type"] == "admin":
+                return redirect("/admin")
+        else:
+
+            return redirect("/signin")
+    
+    return render_template("signin.html")
+    
+@app.route("/signup", methods=["GET", "POST"])
+def signup():
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+        user_type = request.form.get("user_type")
+
+        assert user_type in ["employer", "student"]
+
+        hashed_password = generate_password_hash(password)
+
+        db = get_db()
+        try:
+            db.execute(
+                "INSERT INTO USERS (username, password, user_type) VALUES (?, ?, ?)",
+                (username, hashed_password, user_type),
+            )
+            db.commit()
+        except sqlite3.IntegrityError:
+            return "Username already taken. Please go back and try another."
+
         return redirect("/signin")
 
+    return render_template("signup.html")
+
+@app.route("/logout")
+def logout():
+    session.clear() 
+    return redirect("/signin")
 
 app.run()

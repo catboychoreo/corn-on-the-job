@@ -19,6 +19,12 @@
             <i class="fa-solid fa-house"></i>
             <span>Home</span>
         </button>
+
+        <button id="my-applications">
+            <i class="fa-solid fa-folder-open"></i>
+            <span>My Applications</span>
+        </button>
+
         <button id="logout"><i class="fa-solid fa-arrow-left"></i>
             Log out
         </button>
@@ -30,24 +36,26 @@
     </div>
 
     <div id="main-page">
-        <div id="application">
+        <form id="application" action="/student/apply/submit/{{data[0]}}" method="POST" enctype="multipart/form-data">
             <div id="job-title">You are applying for {{data[1]}} at {{data[3]}}</div>
-            <textarea id="applicant-exp"
+
+            <textarea id="applicant-exp" name="applicant_experience"
                 placeholder="Enter a brief description of your job experience here that may summarize your resume"></textarea>
 
             <div id="application-info">
-                <button id="resume-upload">Upload resume here</button>
-                <input type="file" id="resume-file"
+                <button type="button" id="resume-upload">Upload resume here</button>
+                <input type="file" id="resume-file" name="resume"
                     accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.pdf">
                 <div id="contact-info">
-                    <input type="tel" id="phone-number" placeholder="Enter phone number" autocomplete="off">
-                    <input type="email" id="email" placeholder="Enter email" autocomplete="off">
+                    <input type="tel" id="phone-number" name="phone_number" placeholder="Enter phone number"
+                        autocomplete="off">
+                    <input type="email" id="email" name="email" placeholder="Enter email" autocomplete="off">
                 </div>
             </div>
 
-            <button id="submit" onclick="return applicationSubmitted()">Submit application</button>
+            <button type="submit" id="submit">Submit application</button>
 
-        </div>
+        </form>
     </div>
 
 </body>

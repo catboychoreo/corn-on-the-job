@@ -9,10 +9,16 @@ homeButton.onclick = function () {
     window.location = "/employer"
 }
 
+let myPostsButton = document.getElementById("mypostings")
+
+myPostsButton.onclick = function () {
+    window.location = "/employer/mypostings"
+}
+
 let logOutButton = document.getElementById("logout")
 
 logOutButton.onclick = function () {
-    window.location = "/signin"
+    window.location = "/logout"
 }
 
 let uploadFileButton = document.getElementById("logo-upload")

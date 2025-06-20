@@ -17,5 +17,5 @@ reviewButton.onclick = function () {
 let logOutButton = document.getElementById("logout")
 
 logOutButton.onclick = function () {
-    window.location = "/signin"
+    window.location = "/logout"
 }

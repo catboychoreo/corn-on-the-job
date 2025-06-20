@@ -22,7 +22,7 @@ button:hover {
     height: 240px;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 5px;
 }
 
 #text {

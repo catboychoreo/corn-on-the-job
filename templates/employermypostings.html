@@ -24,10 +24,6 @@
             <i class="fa-solid fa-pen-to-square"></i>
             Create a job listing
         </button>
-        <button id="mypostings">
-            <i class="fa-solid fa-list-check"></i>
-            <span>My Postings</span>
-        </button>
         <button id="logout"><i class="fa-solid fa-arrow-left"></i>
             Log out
         </button>
@@ -58,6 +54,12 @@
                 <div id="job-info">
                     <p id="job-title">{{list[1]}}</p>
                     <p id="job-desc">{{list[2]}}</p>
+
+                    {% if list[5] == 1 %}
+                    <p class="approved">Status: Approved</p>
+                    {% else %}
+                    <p class="pending">Status: Pending Review</p>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}
