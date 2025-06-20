@@ -1,164 +1,172 @@
 @font-face {
-    font-family: "soopafresh";
-    src: url(/static/fonts/soopafre.ttf);
+  font-family: "soopafresh";
+  src: url(/static/fonts/soopafre.ttf);
 }
 
 body {
-    display: flex;
-    margin: 0px;
-    background-color: #b4c273;
-    font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  margin: 0px;
+  background-color: #b4c273;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 button:hover {
-    background-color: #4f603a !important;
-    transition: background-color 0.2s;
+  background-color: #4f603a !important;
+  transition: background-color 0.2s;
 }
 
 #sidebar {
-    display: flex;
-    width: 250px;
-    padding: 5px;
-    align-items: center;
-    flex-direction: column;
-    background-image: linear-gradient(to bottom, rgb(245, 228, 135), rgba(234, 232, 172, 0.132));
-    border: #70821f 3px solid;
-    color: #2c3115;
-    position: relative;
+  display: flex;
+  width: 250px;
+  padding: 5px;
+  align-items: center;
+  flex-direction: column;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(245, 228, 135),
+    rgba(234, 232, 172, 0.132)
+  );
+  border: #70821f 3px solid;
+  color: #2c3115;
+  position: relative;
 }
 
-#sidebar>button {
-    border-radius: 10px;
-    border: #70821f 3px solid;
-    padding: 5px;
-    background-color: #b4c273;
-    font-weight: bold;
-    margin-top: 10px;
+#sidebar > button {
+  border-radius: 10px;
+  border: #70821f 3px solid;
+  padding: 5px;
+  background-color: #b4c273;
+  font-weight: bold;
+  margin-top: 10px;
 }
 
 #cotj {
-    font-size: 25px;
-    color: #2c3115;
-    font-family: "soopafresh", sans-serif;
+  font-size: 25px;
+  color: #2c3115;
+  font-family: "soopafresh", sans-serif;
 }
 
 #logo {
-    width: 50%;
+  width: 50%;
 }
 
-#sidebar>button {
-    margin-top: 5px;
-    margin-bottom: 10px;
+#sidebar > button {
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 #main-page {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
 }
 
 #post {
-    margin-top: 10px;
-    display: flex;
-    background-image: linear-gradient(to right, rgb(245, 228, 135), rgba(234, 232, 172, 0.132));
-    border: #70821f 3px solid;
-    width: 600px;
-    height: 300px;
-    border-radius: 30px;
-    padding: 15px;
-    position: relative;
-    flex-direction: column;
-    gap: 15px;
-    transform: scale(1.5);
+  margin-top: 10px;
+  display: flex;
+  background-image: linear-gradient(
+    to right,
+    rgb(245, 228, 135),
+    rgba(234, 232, 172, 0.132)
+  );
+  border: #70821f 3px solid;
+  width: 600px;
+  height: 300px;
+  border-radius: 30px;
+  padding: 15px;
+  position: relative;
+  flex-direction: column;
+  gap: 15px;
+  transform: scale(1.5);
 }
 
 #job-title {
-    font-size: large;
-    font-weight: bold;
-    background-color: #b4c273;
-    border-radius: 10px;
-    border: #70821f 3px solid;
-    padding: 5px;
+  font-size: large;
+  font-weight: bold;
+  background-color: #b4c273;
+  border-radius: 10px;
+  border: #70821f 3px solid;
+  padding: 5px;
 }
 
 #job-title::placeholder {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #2c3115;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #2c3115;
 }
 
 #job-desc {
-    border-radius: 10px;
-    border: #70821f 3px solid;
-    padding: 5px;
-    height: 100px;
-    font-family: Arial, Helvetica, sans-serif;
+  border-radius: 10px;
+  border: #70821f 3px solid;
+  padding: 5px;
+  height: 100px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #job-desc::placeholder {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #2c3115;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #2c3115;
 }
 
 #job-info {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 #logo-upload {
-    border-radius: 10px;
-    border: #70821f 3px solid;
-    padding: 5px;
-    background-color: #b4c273;
-    font-weight: bold;
-    width: 100px;
-    height: 100px;
-    font-size: 12px;
-    text-align: center;
-    align-content: center;
-    cursor: pointer;
-    user-select: none;
-    color: #2c3115;
+  border-radius: 10px;
+  border: #70821f 3px solid;
+  padding: 5px;
+  background-color: #b4c273;
+  font-weight: bold;
+  width: 100px;
+  height: 100px;
+  font-size: 12px;
+  text-align: center;
+  align-content: center;
+  cursor: pointer;
+  user-select: none;
+  color: #2c3115;
 }
 
 #preview-img {
-    width: 100px;
-    height: 100px;
+  width: 100px;
+  height: 100px;
 }
 
 #logo-file {
-    display: none;
+  display: none;
 }
 
 #contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 300px;
 }
 
 #company-name {
-    border-radius: 5px;
-    border: #70821f 3px solid;
+  border-radius: 5px;
+  border: #70821f 3px solid;
 }
 
 #email {
-    border-radius: 5px;
-    border: #70821f 3px solid;
+  border-radius: 5px;
+  border: #70821f 3px solid;
 }
 
 #submit {
-    width: 150px;
-    border: #70821f 3px solid;
-    border-radius: 10px;
-    background-color: #b4c273;
-    margin-bottom: 10px;
-    font-size: large;
-    font-weight: bold;
-    position: absolute;
-    bottom: 5px;
-    right: 15px;
-    white-space: normal;
-    color: #2c3115;
+  width: 150px;
+  border: #70821f 3px solid;
+  border-radius: 10px;
+  background-color: #b4c273;
+  margin-bottom: 10px;
+  font-size: large;
+  font-weight: bold;
+  position: absolute;
+  bottom: 5px;
+  right: 15px;
+  white-space: normal;
+  color: #2c3115;
 }

@@ -35,10 +35,17 @@
 
     <div id="main-page">
 
-        <form id="searchbar-holder" autocomplete="off">
+        <form id="searchbar-holder" autocomplete="off" method="GET">
             <div id="searchbar-container">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input id="searchbar" placeholder="Type to begin search..." name="query"></input>
+                <input id="searchbar" placeholder="Type to begin search..." name="query" value="{{ query or '' }}"></input>
+            </div>
+            <div id="sort-container">
+                 <select name="sort" id="sort-select">
+                    <option value="newest" {% if sort == 'newest' %}selected{% endif %}>Sort by Newest</option>
+                    <option value="oldest" {% if sort == 'oldest' %}selected{% endif %}>Sort by Oldest</option>
+                </select>
+                <button type="submit" id="search-button">Search</button>
             </div>
         </form>
 

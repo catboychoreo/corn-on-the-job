@@ -1,38 +1,37 @@
 #approve {
-    width: 175px;
-    border: #4f603a 3px solid;
-    border-radius: 10px;
-    background-color: #a5b65c;
-    margin-bottom: 10px;
-    font-size: large;
-    font-weight: bold;
-    position: absolute;
-    right: 45px;
-    bottom: 5px;
+  width: 175px;
+  border: #4f603a 3px solid;
+  border-radius: 10px;
+  background-color: #a5b65c;
+  margin-bottom: 10px;
+  font-size: large;
+  font-weight: bold;
+  position: absolute;
+  right: 45px;
+  bottom: 5px;
 }
 
 #deny {
-    width: 175px;
-    border: 3px solid rgb(120, 55, 44);
-    border-radius: 10px;
-    background-color: rgba(184, 105, 69, 0.959);
-    margin-bottom: 10px;
-    font-size: large;
-    font-weight: bold;
-    position: absolute;
-    right: 245px;
-    bottom: 5px;
+  width: 175px;
+  border: 3px solid rgb(120, 55, 44);
+  border-radius: 10px;
+  background-color: rgba(184, 105, 69, 0.959);
+  margin-bottom: 10px;
+  font-size: large;
+  font-weight: bold;
+  position: absolute;
+  right: 245px;
+  bottom: 5px;
 }
 
 #deny:hover {
-    background-color: rgba(108, 2, 2, 0.934) !important;
-    transition: background-color 0.2s;
+  background-color: rgba(108, 2, 2, 0.934) !important;
+  transition: background-color 0.2s;
 }
 
 #none-text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
 }
-

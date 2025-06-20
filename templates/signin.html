@@ -9,6 +9,15 @@
 
 <body>
     <form id="sign-in" method="post">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="flashes">
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
         <p id="text">Log into Corn on the Job</p>
         <input id="username" placeholder="Username" name="username" autocomplete="off">
         <input type="password" id="password" placeholder="Password" name="password" autocomplete="off">

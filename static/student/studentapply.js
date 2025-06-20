@@ -1,33 +1,33 @@
 function applicationSubmitted() {
-    alert("Application has been submitted!")
-    window.location = "/student"
+  alert("Application has been submitted!");
+  window.location = "/student";
 }
 
-let homeButton = document.getElementById("home")
+let homeButton = document.getElementById("home");
 
 homeButton.onclick = function () {
-    window.location = "/student"
-}
+  window.location = "/student";
+};
 
-let myApplicationsButton = document.getElementById("my-applications")
+let myApplicationsButton = document.getElementById("my-applications");
 
 myApplicationsButton.onclick = function () {
-    window.location = "/student/myapplications"
-}
+  window.location = "/student/myapplications";
+};
 
-let logOutButton = document.getElementById("logout")
+let logOutButton = document.getElementById("logout");
 
 logOutButton.onclick = function () {
-    window.location = "/logout"
-}
+  window.location = "/logout";
+};
 
-let uploadFileButton = document.getElementById("resume-upload")
-let realUploadFileButton = document.getElementById("resume-file")
+let uploadFileButton = document.getElementById("resume-upload");
+let realUploadFileButton = document.getElementById("resume-file");
 
 uploadFileButton.onclick = function () {
-    realUploadFileButton.click()
-}
+  realUploadFileButton.click();
+};
 
 realUploadFileButton.onchange = function () {
-    uploadFileButton.innerText = "Resume uploaded!"
-}
+  uploadFileButton.innerText = "Resume uploaded!";
+};

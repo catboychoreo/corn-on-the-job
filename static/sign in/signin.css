@@ -1,40 +1,60 @@
 body {
-    display: flex;
-    margin: 0px;
-    background-image: linear-gradient(to bottom, rgb(244, 225, 120), rgba(171, 223, 148, 0.664));
-    font-family: Arial, Helvetica, sans-serif;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  margin: 0px;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(244, 225, 120),
+    rgba(171, 223, 148, 0.664)
+  );
+  font-family: Arial, Helvetica, sans-serif;
+  justify-content: center;
+  align-items: center;
 }
 
 button:hover {
-    background-color: #5d603a !important;
-    transition: background-color 0.2s;
+  background-color: #5d603a !important;
+  transition: background-color 0.2s;
 }
 
 #sign-in {
-    display: flex;
-    background-color: #f1e77fb6;
-    border: #4f603a 3px solid;
-    border-radius: 30px;
-    flex-direction: column;
-    width: 330px;
-    height: 240px;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
+  display: flex;
+  background-color: #f1e77fb6;
+  border: #4f603a 3px solid;
+  border-radius: 30px;
+  flex-direction: column;
+  width: 330px;
+  padding: 20px 0;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 #text {
-    font-size: large;
-    font-weight: bold;
+  font-size: large;
+  font-weight: bold;
 }
 
 #log-in {
-    border-radius: 10px;
-    border: #4f603a 3px solid;
-    padding: 7px;
-    background-color: #adba75;
-    font-weight: bold;
-    display: block;
+  border-radius: 10px;
+  border: #4f603a 3px solid;
+  padding: 7px;
+  background-color: #adba75;
+  font-weight: bold;
+  display: block;
+}
+
+.flashes {
+  background-color: #ffb3b3;
+  border: 2px solid #c70000;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 80%;
+}
+
+.flashes p {
+  margin: 0;
+  color: #c70000;
+  font-weight: bold;
 }

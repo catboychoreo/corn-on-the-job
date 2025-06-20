@@ -5,6 +5,7 @@
 
     <link href="/static/student/studenthome.css" rel="stylesheet">
     <link href="/static/icons.css" rel="stylesheet">
+    <link href="/static/employer/employermypostings.css" rel="stylesheet">
     <link rel="icon" href="/static/images/corn.png">
     <script src="https://kit.fontawesome.com/ccd8cc66d9.js" crossorigin="anonymous"></script>
 </head>
@@ -36,11 +37,21 @@
 
     <div id="main-page">
 
-        <form id="searchbar-holder" autocomplete="off">
-            <div id="searchbar-container">
+        <form id="searchbar-holder" autocomplete="off" method="GET">
+            <div class="search-input-container">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input id="searchbar" placeholder="Type to begin search..." name="query"></input>
+                <input id="searchbar" name="query" placeholder="Type to begin search..." value="{{ query or '' }}">
             </div>
+
+            <div class="filter-container">
+                <select name="filter" id="filter-select">
+                    <option value="all" {% if filter=='all' %}selected{% endif %}>Show All</option>
+                    <option value="approved" {% if filter=='approved' %}selected{% endif %}>Show Approved</option>
+                    <option value="pending" {% if filter=='pending' %}selected{% endif %}>Show Pending</option>
+                </select>
+            </div>
+
+            <button type="submit" id="search-button">Search</button>
         </form>
 
         <div id="lots-of-postings">
@@ -56,9 +67,9 @@
                     <p id="job-desc">{{list[2]}}</p>
 
                     {% if list[5] == 1 %}
-                    <p class="approved">Status: Approved</p>
+                    <p class="approved">Approved</p>
                     {% else %}
-                    <p class="pending">Status: Pending Review</p>
+                    <p class="pending">Pending Review</p>
                     {% endif %}
                 </div>
             </div>
@@ -69,6 +80,6 @@
 
 
 </body>
-<script src="/static/employer/employerhome.js"></script>
+<script src="/static/employer/employermypostings.js"></script>
 
 </html>

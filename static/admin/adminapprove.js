@@ -1,3 +1,3 @@
 function jobApproved() {
-    return alert("Job approved!")
+  return alert("Job approved!");
 }
