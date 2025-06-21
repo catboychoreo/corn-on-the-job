@@ -1,21 +1,3 @@
-let homeButton = document.getElementById("home");
-
-homeButton.onclick = function () {
-  window.location = "/student";
-};
-
-let myApplicationsButton = document.getElementById("my-applications");
-
-myApplicationsButton.onclick = function () {
-  window.location = "/student/myapplications";
-};
-
-let logOutButton = document.getElementById("logout");
-
-logOutButton.onclick = function () {
-  window.location = "/logout";
-};
-
 const sidebar = document.querySelector(".sidebar");
 const sidebarToggler = document.querySelector(".sidebar-toggler");
 const menuToggler = document.querySelector(".menu-toggler");
@@ -42,10 +24,10 @@ menuToggler.addEventListener("click", () => {
 //adjust sidebar height on window resize
 window.addEventListener("resize", () => {
   if (window.innerWidth >= 1024) {
-    sidebar.style.height = fullSidebarHeight;
+    // sidebar.style.height = fullSidebarHeight;
   } else {
     sidebar.classList.remove("collapsed");
     sidebar.style.height = "auto";
-    toggleMenu[sidebar.classList.contains(menu-active)];
+    toggleMenu(sidebar.classList.contains("menu-active"));
   }
 });

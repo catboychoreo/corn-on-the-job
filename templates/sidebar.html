@@ -1,0 +1,216 @@
+<div class="sidebar">
+    <header class="sidebar-header">
+        <div class="sidebar-brand">
+            <a href="/student" class="header-logo">
+                <img src="/static/images/corn.png" id="logo">
+            </a>
+            <p class="nav-label">Corn on the Job</p>
+        </div>
+        <button class="toggler sidebar-toggler">
+            <span class="material-symbols-rounded">chevron_left</span>
+        </button>
+        <button class="toggler menu-toggler">
+            <span class="material-symbols-rounded">menu</span>
+        </button>
+    </header>
+
+    <nav class="sidebar-nav">
+        <ul class="nav-list primary-nav">
+            {% if session["user_type"] == "student" %}
+                {% if request.path != "/student" %}
+                <li class="nav-item">
+                    <a href="/student" class="nav-link">
+                        <span class="nav-icon material-symbols-rounded">dashboard</span>
+                        <span class="nav-label">Dashboard</span>
+                    </a>
+                    <span class="nav-tooltip">Dashboard</span>
+                </li>
+                {% endif %}
+
+                {% if request.path != "/student/myapplications" %}
+                <li class="nav-item">
+                    <a href="/student/myapplications" class="nav-link">
+                        <span class="nav-icon material-symbols-rounded">folder</span>
+                        <span class="nav-label">My Applications</span>
+                    </a>
+                    <span class="nav-tooltip">My Applications</span>
+                </li>
+                {% endif %}
+                
+                {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <span class="nav-icon material-symbols-rounded">chat</span>
+                        <span class="nav-label">Messages</span>
+                    </a>
+                    <span class="nav-tooltip">Messages</span>
+                </li>
+                {% endif %}
+
+                {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <span class="nav-icon material-symbols-rounded">notifications</span>
+                        <span class="nav-label">Notifications</span>
+                    </a>
+                    <span class="nav-tooltip">Notifications</span>
+                </li>
+                {% endif %}
+
+                {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <span class="nav-icon material-symbols-rounded">star</span>
+                        <span class="nav-label">Saved</span>
+                    </a>
+                    <span class="nav-tooltip">Saved</span>
+                </li>
+                {% endif %}
+
+                {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <span class="nav-icon material-symbols-rounded">settings</span>
+                        <span class="nav-label">Settings</span>
+                    </a>
+                    <span class="nav-tooltip">Settings</span>
+                </li>
+                {% endif %}
+            {% elif session["user_type"] == "employer" %}
+                {% if request.path != "/employer" %}
+                <li class="nav-item">
+                    <a href="/employer" class="nav-link">
+                        <span class="nav-icon material-symbols-rounded">dashboard</span>
+                        <span class="nav-label">Dashboard</span>
+                    </a>
+                    <span class="nav-tooltip">Dashboard</span>
+                </li>
+                {% endif %}
+
+                {% if request.path != "/employer/post" %}
+                <li class="nav-item">
+                    <a href="/employer/post" class="nav-link">
+                        <span class="nav-icon material-symbols-rounded">edit_document</span>
+                        <span class="nav-label">Post a Job</span>
+                    </a>
+                    <span class="nav-tooltip">Post a Job</span>
+                </li>
+                {% endif %}
+
+                {% if request.path != "/employer/mypostings" %}
+                <li class="nav-item">
+                    <a href="/employer/mypostings" class="nav-link">
+                        <span class="nav-icon material-symbols-rounded">folder</span>
+                        <span class="nav-label">My Postings</span>
+                    </a>
+                    <span class="nav-tooltip">My Postings</span>
+                </li>
+                {% endif %}
+                
+                {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <span class="nav-icon material-symbols-rounded">chat</span>
+                        <span class="nav-label">Messages</span>
+                    </a>
+                    <span class="nav-tooltip">Messages</span>
+                </li>
+                {% endif %}
+
+                {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <span class="nav-icon material-symbols-rounded">notifications</span>
+                        <span class="nav-label">Notifications</span>
+                    </a>
+                    <span class="nav-tooltip">Notifications</span>
+                </li>
+                {% endif %}
+
+                {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <span class="nav-icon material-symbols-rounded">settings</span>
+                        <span class="nav-label">Settings</span>
+                    </a>
+                    <span class="nav-tooltip">Settings</span>
+                </li>
+                {% endif %}
+            {% elif session["user_type"] == "admin" %}
+
+                {% if request.path != "/admin" %}
+                <li class="nav-item">
+                    <a href="/admin" class="nav-link">
+                        <span class="nav-icon material-symbols-rounded">dashboard</span>
+                        <span class="nav-label">Dashboard</span>
+                    </a>
+                    <span class="nav-tooltip">Dashboard</span>
+                </li>
+                {% endif %}
+
+                {% if request.path != "/admin/review" %}
+                <li class="nav-item">
+                    <a href="/admin/review" class="nav-link">
+                        <span class="nav-icon material-symbols-rounded">grading</span>
+                        <span class="nav-label">Review Pending Job Listings</span>
+                    </a>
+                    <span class="nav-tooltip">Review Pending Job Listings</span>
+                </li>
+                {% endif %}
+
+
+                {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <span class="nav-icon material-symbols-rounded">chat</span>
+                        <span class="nav-label">Messages</span>
+                    </a>
+                    <span class="nav-tooltip">Messages</span>
+                </li>
+                {% endif %}
+
+                {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <span class="nav-icon material-symbols-rounded">notifications</span>
+                        <span class="nav-label">Notifications</span>
+                    </a>
+                    <span class="nav-tooltip">Notifications</span>
+                </li>
+                {% endif %}
+
+                {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <span class="nav-icon material-symbols-rounded">settings</span>
+                        <span class="nav-label">Settings</span>
+                    </a>
+                    <span class="nav-tooltip">Settings</span>
+                </li>
+                {% endif %}
+            {% endif %}
+        </ul>
+
+        <ul class="nav-list secondary-nav">
+            
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <span class="nav-icon material-symbols-rounded">{{ 
+                        {"admin": "manage_accounts", "employer": "work"}.get(session["user_type"], "account_circle")
+                    }}</span>
+                    <span class="nav-label">{{ session["user_type"].title() }} Profile</span>
+                </a>
+                <span class="nav-tooltip">{{ session["user_type"].title() }} Profile</span>
+            </li>
+
+            <li class="nav-item">
+                <a href="/logout" class="nav-link">
+                    <span class="nav-icon material-symbols-rounded">logout</span>
+                    <span class="nav-label">Logout</span>
+                </a>
+                <span class="nav-tooltip">Logout</span>
+            </li>
+        </ul>
+    </nav>
+</div>
