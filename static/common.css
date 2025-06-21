@@ -1,0 +1,60 @@
+@font-face {
+  font-family: "soopafresh";
+  src: url(/static/fonts/soopafre.ttf);
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+  margin: 0px;
+  background-color: #b4c273;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+}
+
+button:hover {
+  background-color: #4f603a !important;
+  transition: background-color 0.2s;
+}
+
+#sidebar {
+  display: flex;
+  width: 200px;
+  padding: 5px;
+  align-items: center;
+  flex-direction: column;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(245, 228, 135),
+    rgba(234, 232, 172, 0.132)
+  );
+  border: #4f603a solid 2px;
+  position: relative;
+}
+
+#sidebar > button {
+  border-radius: 10px;
+  border: #4f603a 3px solid;
+  padding: 7px;
+  background-color: #b4c273;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #2c3115;
+}
+
+#sidebar > button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#cotj {
+  font-size: 25px;
+  color: #2c3115;
+  font-family: "soopafresh", sans-serif;
+}
+
+#logo {
+  width: 50%;
+}
