@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Employer Dashboard - Corn on the Job</title>
+    {% include "common_head.html" %}
+    <link href="/static/student/studenthome.css" rel="stylesheet">
+    <link href="/static/dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+    {% include "sidebar.html" %}
+
+    <div id="main-page" class="dashboard-main-page">
+        <h2 class="dashboard-title">Employer Dashboard</h2>
+
+        <div class="dashboard-metrics">
+            <div class="metric-box">
+                <span class="metric-value">{{ total_active_listings }}</span>
+                <span class="metric-label">Active Job Postings</span>
+            </div>
+            <div class="metric-box">
+                <span class="metric-value">{{ total_pending_listings }}</span>
+                <span class="metric-label">Pending Job Postings</span>
+            </div>
+            <div class="metric-box">
+                <span class="metric-value">{{ total_applications_received }}</span>
+                <span class="metric-label">Total Applications Received</span>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="info-card">
+                <h3>Recent Applicant Activity</h3>
+                {% if recent_applications_employer %}
+                <ul class="info-card-list">
+                    {% for app in recent_applications_employer %}
+                    <li><strong>{{ app[0] }}</strong> applied for <strong>{{ app[1] }}</strong>.</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p class="info-card-placeholder">No recent applications received.</p>
+                {% endif %}
+            </div>
+
+            <div class="info-card">
+                <h3>Quick Actions</h3>
+                <div class="quick-actions">
+                    <a href="/employer/post" class="action-button">
+                        <span class="material-symbols-rounded">edit_document</span>
+                        Post a New Job
+                    </a>
+                    <a href="/employer/mypostings" class="action-button">
+                        <span class="material-symbols-rounded">folder</span>
+                        View My Postings
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="/static/student/studenthome.js"></script>
+</html>

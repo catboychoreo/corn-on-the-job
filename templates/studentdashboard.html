@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Dashboard - Corn on the Job</title>
+    {% include "common_head.html" %}
+    <link href="/static/dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+    {% include "sidebar.html" %}
+    <div id="main-page" class="dashboard-main-page">
+        <h2 class="dashboard-title">Welcome, {{ session["username"] }}!</h2>
+        <div class="dashboard-metrics">
+            <div class="metric-box">
+                <span class="metric-value">{{ total_applied_jobs }}</span>
+                <span class="metric-label">Jobs Applied</span>
+            </div>
+            <div class="metric-box">
+                <span class="metric-value">{{ pending_decisions }}</span>
+                <span class="metric-label">Pending Decisions</span>
+            </div>
+            <div class="metric-box">
+                <span class="metric-value">{{ total_available_jobs }}</span>
+                <span class="metric-label">Total Jobs Available</span>
+            </div>
+        </div>
+        <div class="dashboard-grid">
+            <div class="info-card" id="student-activity-card">
+                <h3>Recent Applications</h3>
+                {% if recent_applications %}
+                <ul class="activity-feed">
+                    {% for app in recent_applications %}
+                    <li>Applied for <strong>{{ app[0] }}</strong> at {{ app[1] }}.</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p class="info-card-placeholder">You haven't applied to any jobs yet!</p>
+                {% endif %}
+            </div>
+            <div class="info-card">
+                <h3>Recommended Jobs</h3>
+                {% if recommended_jobs %}
+                <ul class="info-card-list">
+                    {% for job in recommended_jobs %}
+                    <li>
+                        <span><strong>{{ job[1] }}</strong> at {{ job[2] }}</span>
+                        <a href="/student/apply/{{ job[0] }}" class="action-button"
+                            style="padding: 5px 15px; font-size: 1em;">Apply</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p class="info-card-placeholder">No new job recommendations at this time.</p>
+                {% endif %}
+            </div>
+            <div class="info-card">
+                <h3>Quick Links</h3>
+                <div class="quick-actions">
+                    <a href="/student" class="action-button">
+                        <span class="material-symbols-rounded">search</span>
+                        Browse Jobs
+                    </a>
+                    <a href="/student/myapplications" class="action-button">
+                        <span class="material-symbols-rounded">folder</span>
+                        My Applications
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/student/studenthome.js"></script>
+</body>
+
+</html>

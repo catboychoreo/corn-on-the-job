@@ -1,17 +1,6 @@
 /*importing google fonts (poppins)*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-#main-page {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  background: linear-gradient(to bottom right, #e0f7df, #b7d7a8);
-  min-height: 100vh;
-  margin-left: 270px;
-  width: calc(100% - 270px);
-  transition: all 0.4s ease;
-}
-
 .sidebar.collapsed~#main-page {
   margin-left: 85px;
   width: calc(100% - 85px);
@@ -172,15 +161,6 @@
   font-size: large;
   font-weight: bold;
   color: #2c3115;
-}
-
-/*sidebar*/
-body {
-  min-height: 100vh;
-  background-image: linear-gradient(to right,
-      rgb(245, 228, 135),
-      rgba(234, 232, 172, 0.132));
-
 }
 
 * {

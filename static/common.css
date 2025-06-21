@@ -3,9 +3,9 @@
   src: url(/static/fonts/soopafre.ttf);
 }
 
-html, body {
+/* html, body {
     height: 100%;
-}
+} */
 
 body {
   margin: 0px;
@@ -68,10 +68,10 @@ button:hover {
   flex-direction: column;
   flex-grow: 1;
   background: linear-gradient(to bottom right, #e0f7df, #b7d7a8);
-  min-height: 100vh;
   margin-left: 270px;
   width: calc(100% - 270px);
   transition: all 0.4s ease;
+  min-height: 100vh;
 }
 
 .sidebar.collapsed~#main-page {

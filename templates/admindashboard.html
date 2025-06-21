@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Dashboard - Corn on the Job</title>
+    {% include "common_head.html" %}
+    <link href="/static/dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+    {% include "sidebar.html" %}
+    <div id="main-page" class="dashboard-main-page">
+        <h2 class="dashboard-title">Admin Dashboard</h2>
+        <div class="dashboard-metrics">
+            <div class="metric-box">
+                <span class="metric-value">{{ total_users }}</span>
+                <span class="metric-label">Total Users</span>
+            </div>
+            <div class="metric-box">
+                <span class="metric-value">{{ total_active_listings_admin }}</span>
+                <span class="metric-label">Active Job Listings</span>
+            </div>
+            <div class="metric-box">
+                <span class="metric-value">{{ total_pending_jobs }}</span>
+                <span class="metric-label">Pending Job Reviews</span>
+            </div>
+        </div>
+        <div class="dashboard-grid">
+            <div class="info-card">
+                <h3>Admin Actions</h3>
+                <div class="quick-actions">
+                    <a href="/admin/review" class="action-button">
+                        <span class="material-symbols-rounded">grading</span>
+                        Review Jobs
+                    </a>
+                    <a href="/admin" class="action-button">
+                        <span class="material-symbols-rounded">view_list</span>
+                        Manage Listings
+                    </a>
+                </div>
+            </div>
+            <div class="info-card">
+                <h3>User Statistics</h3>
+                <ul class="info-card-list">
+                    <li>Students <span><strong>{{ user_stats.get('student', 0) }}</strong></span></li>
+                    <li>Employers <span><strong>{{ user_stats.get('employer', 0) }}</strong></span></li>
+                    <li>Admins <span><strong>{{ user_stats.get('admin', 0) }}</strong></span></li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h3>Recent Job Applications</h3>
+                {% if recent_job_applications %}
+                <ul class="activity-feed">
+                    {% for app in recent_job_applications %}
+                    <li><strong>{{ app[0] }}</strong> applied for <strong>{{ app[1] }}</strong>.</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p class="info-card-placeholder">No recent job applications.</p>
+                {% endif %}
+            </div>
+            <div class="info-card" id="recent-users-card">
+                <h3>Recent User Registrations</h3>
+                {% if recent_users %}
+                <ul class="activity-feed">
+                    {% for user in recent_users %}
+                    <li><strong>{{ user[0] }}</strong> registered as a {{ user[1] }}.</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p class="info-card-placeholder">No new users have registered.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <script src="/static/student/studenthome.js"></script>
+</body>
+
+</html>

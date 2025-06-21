@@ -5,8 +5,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 import traceback
 
-# hi
-
 app = Flask(__name__)
 app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -16,7 +14,6 @@ app.config["UPLOAD_FOLDER"] = "static/resumes"
 os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
 
 
-# gets the database from sql
 def get_db():
     db = getattr(g, "_database", None)
     if db is None:
@@ -24,7 +21,56 @@ def get_db():
     return db
 
 
-# establishes the student home page 
+@app.route("/student/dashboard")
+def student_dashboard():
+    if "user_id" not in session or session["user_type"] != "student":
+        return redirect("/signin")
+
+    user_id = session["user_id"]
+    db = get_db()
+
+    cursor = db.execute("SELECT COUNT(*) FROM APPLICATIONS WHERE user_id = ?", (user_id,))
+    total_applied_jobs = cursor.fetchone()[0]
+
+    cursor = db.execute("SELECT COUNT(*) FROM JOBS WHERE APPROVED = 1")
+    total_available_jobs = cursor.fetchone()[0]
+
+    cursor = db.execute("""
+        SELECT COUNT(DISTINCT j.ID)
+        FROM JOBS j
+        JOIN APPLICATIONS a ON j.ID = a.job_id
+        WHERE a.user_id = ? AND j.APPROVED = 1
+    """, (user_id,))
+    pending_decisions = cursor.fetchone()[0]
+
+    cursor = db.execute("""
+        SELECT j.JOB_TITLE, j.COMPANY
+        FROM APPLICATIONS a
+        JOIN JOBS j ON a.job_id = j.ID
+        WHERE a.user_id = ?
+        ORDER BY a.ID DESC
+        LIMIT 5
+    """, (user_id,))
+    recent_applications = cursor.fetchall()
+
+    cursor = db.execute("""
+        SELECT j.ID, j.JOB_TITLE, j.COMPANY FROM JOBS j
+        WHERE j.APPROVED = 1 AND j.ID NOT IN (SELECT job_id FROM APPLICATIONS WHERE user_id = ?)
+        ORDER BY j.ID DESC
+        LIMIT 3
+    """, (user_id,))
+    recommended_jobs = cursor.fetchall()
+
+    return render_template(
+        "studentdashboard.html",
+        total_applied_jobs=total_applied_jobs,
+        total_available_jobs=total_available_jobs,
+        pending_decisions=pending_decisions,
+        recent_applications=recent_applications,
+        recommended_jobs=recommended_jobs
+    )
+
+
 @app.route("/student")
 def student_home():
     job_query = request.args.get("query", "")
@@ -48,7 +94,6 @@ def student_home():
     return render_template("studenthome.html", data=data, query=job_query, sort=sort_by)
 
 
-# creates different application pages for different job listings based off of their ids
 @app.route("/student/apply/<int:job_id>")
 def student_apply(job_id):
     cursor = get_db().execute(
@@ -86,6 +131,8 @@ def submit_application(job_id):
         (user_id, job_id, experience, phone, email, resume_filename),
     )
     db.commit()
+
+    flash("Your application has been submitted successfully!")
 
     return redirect("/student")
 
@@ -143,6 +190,46 @@ def employer_home():
     data = cursor.fetchall()
     return render_template("employerhome.html", data=data, query=job_query, sort=sort_by)
 
+@app.route("/employer/dashboard")
+def employer_dashboard():
+    if "user_id" not in session or session["user_type"] != "employer":
+        return redirect("/signin")
+
+    user_id = session["user_id"]
+    db = get_db()
+
+    cursor = db.execute("SELECT COUNT(*) FROM JOBS WHERE USER_ID = ? AND APPROVED = 1", (user_id,))
+    total_active_listings = cursor.fetchone()[0]
+
+    cursor = db.execute("SELECT COUNT(*) FROM JOBS WHERE USER_ID = ? AND APPROVED = 0", (user_id,))
+    total_pending_listings = cursor.fetchone()[0]
+
+    cursor = db.execute("""
+        SELECT COUNT(a.ID)
+        FROM APPLICATIONS a
+        JOIN JOBS j ON a.job_id = j.ID
+        WHERE j.USER_ID = ?
+    """, (user_id,))
+    total_applications_received = cursor.fetchone()[0]
+
+    cursor = db.execute("""
+        SELECT u.username, j.JOB_TITLE
+        FROM APPLICATIONS a
+        JOIN JOBS j ON a.job_id = j.ID
+        JOIN USERS u ON a.user_id = u.ID
+        WHERE j.USER_ID = ?
+        ORDER BY a.ID DESC
+        LIMIT 5
+    """, (user_id,))
+    recent_applications_employer = cursor.fetchall()
+
+    return render_template(
+        "employerdashboard.html",
+        total_active_listings=total_active_listings,
+        total_pending_listings=total_pending_listings,
+        total_applications_received=total_applications_received,
+        recent_applications_employer=recent_applications_employer
+    )
 
 @app.route("/employer/post")
 def go_employ():
@@ -158,22 +245,30 @@ def employer_post():
 
     if "logo" in request.files and request.files["logo"].filename:
         logo_file = request.files["logo"]
-        logo_file.save("static/images/" + logo_file.filename)
-        file_name = logo_file.filename
+        filename = secure_filename(logo_file.filename)
+        logo_file.save(os.path.join("static/images", filename))
+        file_name = filename
     else:
         file_name = "placeholder.webp"
 
-    cursor = get_db().execute(
-        "INSERT INTO JOBS (JOB_TITLE, DESCRIPTION, COMPANY, LOGO, USER_ID) VALUES (?, ?, ?, ?, ?)",
-        (
-            job_title,
-            job_desc,
-            company,
-            file_name,
-            user_id,
-        ),
-    )
-    get_db().commit()
+    db = get_db()
+    try:
+        db.execute(
+            "INSERT INTO JOBS (JOB_TITLE, DESCRIPTION, COMPANY, LOGO, USER_ID) VALUES (?, ?, ?, ?, ?)",
+            (
+                job_title,
+                job_desc,
+                company,
+                file_name,
+                user_id,
+            ),
+        )
+        db.commit()
+        flash("Your job posting has been submitted for review and will be public once approved.")
+    except Exception as e:
+        flash(f"An error occurred: {e}")
+        db.rollback()
+
     return render_template("employerpost.html")
 
 
@@ -227,6 +322,48 @@ def admin_home():
     data = cursor.fetchall()
     return render_template("adminhome.html", data=data, query=job_query, sort=sort_by)
 
+@app.route("/admin/dashboard")
+def admin_dashboard():
+    if "user_id" not in session or session["user_type"] != "admin":
+        return redirect("/signin")
+
+    db = get_db()
+
+    cursor = db.execute("SELECT COUNT(*) FROM USERS")
+    total_users = cursor.fetchone()[0]
+
+    cursor = db.execute("SELECT COUNT(*) FROM JOBS WHERE APPROVED = 1")
+    total_active_listings_admin = cursor.fetchone()[0]
+
+    cursor = db.execute("SELECT COUNT(*) FROM JOBS WHERE APPROVED = 0")
+    total_pending_jobs = cursor.fetchone()[0] 
+
+    cursor = db.execute("""
+        SELECT u.username, j.JOB_TITLE, a.ID AS application_id
+        FROM APPLICATIONS a
+        JOIN USERS u ON a.user_id = u.ID
+        JOIN JOBS j ON a.job_id = j.ID
+        ORDER BY a.ID DESC
+        LIMIT 5
+    """)
+    recent_job_applications = cursor.fetchall()
+
+    cursor = db.execute("SELECT user_type, COUNT(*) FROM USERS GROUP BY user_type")
+    user_stats = dict(cursor.fetchall())
+    
+    cursor = db.execute("SELECT username, user_type FROM USERS ORDER BY ID DESC LIMIT 5")
+    recent_users = cursor.fetchall()
+
+    return render_template(
+        "admindashboard.html",
+        total_users=total_users,
+        total_active_listings_admin=total_active_listings_admin,
+        total_pending_jobs=total_pending_jobs,
+        recent_job_applications=recent_job_applications,
+        user_stats=user_stats,
+        recent_users=recent_users
+    )
+
 
 @app.route("/admin/delete", methods=["POST"])
 def delete_job():
@@ -240,11 +377,11 @@ def delete_job():
 
         if cursor.rowcount > 0:
             get_db().commit()
-            print("Job deleted succesfully!")
+            flash("Job deleted successfully!")
         else:
-            print("uh oh...")
+            flash("Job not found or could not be deleted.")
     else:
-        print("no job id!")
+        flash("No job ID provided for deletion.")
 
     return redirect("/admin")
 
@@ -279,11 +416,11 @@ def deny_job():
         cursor = get_db().execute("DELETE FROM JOBS WHERE ID=?", (post_id,))
         if cursor.rowcount > 0:
             get_db().commit()
-            print("Job deleted succesfully!")
+            flash("Job denied and deleted successfully!")
         else:
-            print("uh oh...")
+            flash("Job not found or could not be denied.")
     else:
-        print("no job id!")
+        flash("No job ID provided for denial.")
 
     return redirect("/admin/review")
 
@@ -292,11 +429,15 @@ def deny_job():
 def approve_job():
     post_id = request.form.get("approve-id")
 
-    cursor = get_db().execute(
-        "UPDATE JOBS SET APPROVED=1 WHERE ID=?",
-        (post_id,),
-    )
-    get_db().commit()
+    if post_id:
+        cursor = get_db().execute(
+            "UPDATE JOBS SET APPROVED=1 WHERE ID=?",
+            (post_id,),
+        )
+        get_db().commit()
+        flash("Job approved successfully!")
+    else:
+        flash("No job ID provided for approval.")
 
     return redirect("/admin/review")
 
@@ -304,12 +445,6 @@ def approve_job():
 @app.route("/")
 def go_sign():
     return redirect("/signin")
-
-
-@app.route("/signin")
-def sign_in():
-    return render_template("signin.html")
-
 
 @app.route("/signin", methods=["GET", "POST"])
 def get_in():
@@ -324,20 +459,20 @@ def get_in():
 
         if user and check_password_hash(user[2], password):
             session["user_id"] = user[0]
+            session["username"] = user[1]
             session["user_type"] = user[3]
 
             if session["user_type"] == "student":
-                return redirect("/student")
+                return redirect("/student/dashboard") 
             elif session["user_type"] == "employer":
-                return redirect("/employer")
+                return redirect("/employer/dashboard") 
             elif session["user_type"] == "admin":
-                return redirect("/admin")
+                return redirect("/admin/dashboard") 
         else:
             flash("Invalid username or password. Please try again.")
             return redirect("/signin")
 
     return render_template("signin.html")
-
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
@@ -357,6 +492,7 @@ def signup():
                 (username, hashed_password, user_type),
             )
             db.commit()
+            flash("Account created successfully! Please log in.")
         except sqlite3.IntegrityError:
             flash("Username already taken. Please go back and try another.")
             return redirect("/signup")
@@ -372,4 +508,12 @@ def logout():
     return redirect("/signin")
 
 
-app.run()
+@app.teardown_appcontext
+def close_connection(exception):
+    db = getattr(g, "_database", None)
+    if db is not None:
+        db.close()
+
+
+if __name__ == '__main__':
+    app.run(debug=True)

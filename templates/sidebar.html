@@ -1,7 +1,7 @@
 <div class="sidebar">
     <header class="sidebar-header">
         <div class="sidebar-brand">
-            <a href="/student" class="header-logo">
+            <a href="/student/dashboard" class="header-logo"> 
                 <img src="/static/images/corn.png" id="logo">
             </a>
             <p class="nav-label">Corn on the Job</p>
@@ -17,13 +17,23 @@
     <nav class="sidebar-nav">
         <ul class="nav-list primary-nav">
             {% if session["user_type"] == "student" %}
-                {% if request.path != "/student" %}
+                {% if request.path != "/student/dashboard" %} 
                 <li class="nav-item">
-                    <a href="/student" class="nav-link">
+                    <a href="/student/dashboard" class="nav-link">
                         <span class="nav-icon material-symbols-rounded">dashboard</span>
                         <span class="nav-label">Dashboard</span>
                     </a>
                     <span class="nav-tooltip">Dashboard</span>
+                </li>
+                {% endif %}
+
+                {% if request.path != "/student" %}
+                <li class="nav-item">
+                    <a href="/student" class="nav-link">
+                        <span class="nav-icon material-symbols-rounded">search</span> 
+                        <span class="nav-label">Browse Jobs</span>
+                    </a>
+                    <span class="nav-tooltip">Browse Jobs</span>
                 </li>
                 {% endif %}
 
@@ -77,13 +87,23 @@
                 </li>
                 {% endif %}
             {% elif session["user_type"] == "employer" %}
-                {% if request.path != "/employer" %}
+                {% if request.path != "/employer/dashboard" %} 
                 <li class="nav-item">
-                    <a href="/employer" class="nav-link">
+                    <a href="/employer/dashboard" class="nav-link"> 
                         <span class="nav-icon material-symbols-rounded">dashboard</span>
                         <span class="nav-label">Dashboard</span>
                     </a>
                     <span class="nav-tooltip">Dashboard</span>
+                </li>
+                {% endif %}
+
+                {% if request.path != "/employer" %}
+                <li class="nav-item">
+                    <a href="/employer" class="nav-link">
+                        <span class="nav-icon material-symbols-rounded">search</span> 
+                        <span class="nav-label">Browse Jobs</span>
+                    </a>
+                    <span class="nav-tooltip">Browse Jobs</span>
                 </li>
                 {% endif %}
 
@@ -138,9 +158,9 @@
                 {% endif %}
             {% elif session["user_type"] == "admin" %}
 
-                {% if request.path != "/admin" %}
+                {% if request.path != "/admin/dashboard" %}
                 <li class="nav-item">
-                    <a href="/admin" class="nav-link">
+                    <a href="/admin/dashboard" class="nav-link"> 
                         <span class="nav-icon material-symbols-rounded">dashboard</span>
                         <span class="nav-label">Dashboard</span>
                     </a>
@@ -148,13 +168,23 @@
                 </li>
                 {% endif %}
 
+                {% if request.path != "/admin" %}
+                <li class="nav-item">
+                    <a href="/admin" class="nav-link">
+                        <span class="nav-icon material-symbols-rounded">search</span>
+                        <span class="nav-label">Browse Jobs</span>
+                    </a>
+                    <span class="nav-tooltip">Browse Jobs</span>
+                </li>
+                {% endif %}
+
                 {% if request.path != "/admin/review" %}
                 <li class="nav-item">
                     <a href="/admin/review" class="nav-link">
                         <span class="nav-icon material-symbols-rounded">grading</span>
-                        <span class="nav-label">Review Pending Job Listings</span>
+                        <span class="nav-label">Review Job Listings</span>
                     </a>
-                    <span class="nav-tooltip">Review Pending Job Listings</span>
+                    <span class="nav-tooltip">Review Job Listings</span>
                 </li>
                 {% endif %}
 

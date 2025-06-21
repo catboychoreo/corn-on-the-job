@@ -13,6 +13,15 @@
 
 
     <form id="main-page" method="post" enctype="multipart/form-data" autocomplete="off">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="flashes">
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
         <div id="post">
             <input id="job-title" placeholder="Enter your job/position's title" name="job-title" autocomplete="off">
             <textarea id="job-desc" placeholder="Enter a brief description of the position you are hiring for"
