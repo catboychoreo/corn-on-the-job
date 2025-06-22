@@ -82,6 +82,9 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    height: 200px;
+    overflow-y: auto;
+    scrollbar-width: none;
 }
 
 .activity-feed li {
@@ -97,13 +100,20 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    overflow-x: auto;
+    white-space: nowrap;
+    height: 200px;
+}
+
+.info-card-list {
+    scrollbar-width: none;
 }
 
 .info-card-list li {
     padding: 12px 5px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     display: flex;
-    justify-content: space-between;
+    gap: 5px;
     align-items: center;
 }
 
@@ -124,25 +134,7 @@
 #recent-users-card .activity-feed {
     max-height: 190px;
     overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #70821f #e0f7df;
 }
-
-#recent-users-card .activity-feed::-webkit-scrollbar {
-    width: 8px;
-}
-
-#recent-users-card .activity-feed::-webkit-scrollbar-track {
-    background: #e0f7df;
-    border-radius: 10px;
-}
-
-#recent-users-card .activity-feed::-webkit-scrollbar-thumb {
-    background-color: #70821f;
-    border-radius: 10px;
-    border: 2px solid #e0f7df;
-}
-
 
 .quick-actions {
     display: grid;
