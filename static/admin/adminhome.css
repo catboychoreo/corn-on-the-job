@@ -1,4 +1,4 @@
-#delete {
+.delete {
   border: 3px solid rgb(120, 55, 44);
   border-radius: 10px;
   background-color: rgba(184, 105, 69, 0.959);
@@ -11,7 +11,7 @@
   bottom: 5px;
 }
 
-#delete:hover {
+.delete:hover { 
   background-color: rgba(108, 2, 2, 0.934) !important;
   transition: background-color 0.2s;
 }

@@ -1,7 +1,35 @@
+{% macro search_bar(search_type, query=None, sort=None, filter=None, placeholder=None, action=None) %}
+<form id="searchbar-holder" autocomplete="off" method="GET" action="{{ action or '' }}">
+    <div class="search-input-container">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input id="searchbar" placeholder="{{ placeholder or 'Type to begin search...' }}" name="query"
+            value="{{ query or '' }}">
+    </div>
+
+    {% if search_type == 'sort' %}
+    <div class="search-controls">
+        <select name="sort" id="sort-select">
+            <option value="newest" {% if sort=='newest' %}selected{% endif %}>Sort by Newest</option>
+            <option value="oldest" {% if sort=='oldest' %}selected{% endif %}>Sort by Oldest</option>
+        </select>
+        <button type="submit" id="search-button">Search</button>
+    </div>
+    {% elif search_type == 'filter' %}
+    <div class="search-controls">
+        <select name="filter" id="filter-select">
+            <option value="all" {% if filter=='all' %}selected{% endif %}>Show All</option>
+            <option value="approved" {% if filter=='approved' %}selected{% endif %}>Show Approved</option>
+            <option value="pending" {% if filter=='pending' %}selected{% endif %}>Show Pending</option>
+        </select>
+        <button type="submit" id="search-button">Search</button>
+    </div>
+    {% endif %}
+</form>
+{% endmacro %}
 <div class="sidebar">
     <header class="sidebar-header">
         <div class="sidebar-brand">
-            <a href="/student/dashboard" class="header-logo"> 
+            <a href="/student/dashboard" class="header-logo">
                 <img src="/static/images/corn.png" id="logo">
             </a>
             <p class="nav-label">Corn on the Job</p>
@@ -17,218 +45,218 @@
     <nav class="sidebar-nav">
         <ul class="nav-list primary-nav">
             {% if session["user_type"] == "student" %}
-                {% if request.path != "/student/dashboard" %} 
-                <li class="nav-item">
-                    <a href="/student/dashboard" class="nav-link">
-                        <span class="nav-icon material-symbols-rounded">dashboard</span>
-                        <span class="nav-label">Dashboard</span>
-                    </a>
-                    <span class="nav-tooltip">Dashboard</span>
-                </li>
-                {% endif %}
+            {% if request.path != "/student/dashboard" %}
+            <li class="nav-item">
+                <a href="/student/dashboard" class="nav-link">
+                    <span class="nav-icon material-symbols-rounded">dashboard</span>
+                    <span class="nav-label">Dashboard</span>
+                </a>
+                <span class="nav-tooltip">Dashboard</span>
+            </li>
+            {% endif %}
 
-                {% if request.path != "/student" %}
-                <li class="nav-item">
-                    <a href="/student" class="nav-link">
-                        <span class="nav-icon material-symbols-rounded">search</span> 
-                        <span class="nav-label">Browse Jobs</span>
-                    </a>
-                    <span class="nav-tooltip">Browse Jobs</span>
-                </li>
-                {% endif %}
+            {% if request.path != "/student" %}
+            <li class="nav-item">
+                <a href="/student" class="nav-link">
+                    <span class="nav-icon material-symbols-rounded">search</span>
+                    <span class="nav-label">Browse Jobs</span>
+                </a>
+                <span class="nav-tooltip">Browse Jobs</span>
+            </li>
+            {% endif %}
 
-                {% if request.path != "/student/myapplications" %}
-                <li class="nav-item">
-                    <a href="/student/myapplications" class="nav-link">
-                        <span class="nav-icon material-symbols-rounded">folder</span>
-                        <span class="nav-label">My Applications</span>
-                    </a>
-                    <span class="nav-tooltip">My Applications</span>
-                </li>
-                {% endif %}
-                
-                {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <span class="nav-icon material-symbols-rounded">chat</span>
-                        <span class="nav-label">Messages</span>
-                    </a>
-                    <span class="nav-tooltip">Messages</span>
-                </li>
-                {% endif %}
+            {% if request.path != "/student/myapplications" %}
+            <li class="nav-item">
+                <a href="/student/myapplications" class="nav-link">
+                    <span class="nav-icon material-symbols-rounded">folder</span>
+                    <span class="nav-label">My Applications</span>
+                </a>
+                <span class="nav-tooltip">My Applications</span>
+            </li>
+            {% endif %}
 
-                {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <span class="nav-icon material-symbols-rounded">notifications</span>
-                        <span class="nav-label">Notifications</span>
-                    </a>
-                    <span class="nav-tooltip">Notifications</span>
-                </li>
-                {% endif %}
+            {% if request.path != "/student/saved" %}
+            <li class="nav-item">
+                <a href="/student/saved" class="nav-link">
+                    <span class="nav-icon material-symbols-rounded">star</span>
+                    <span class="nav-label">Saved</span>
+                </a>
+                <span class="nav-tooltip">Saved</span>
+            </li>
+            {% endif %}
 
-                {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <span class="nav-icon material-symbols-rounded">star</span>
-                        <span class="nav-label">Saved</span>
-                    </a>
-                    <span class="nav-tooltip">Saved</span>
-                </li>
-                {% endif %}
+            {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <span class="nav-icon material-symbols-rounded">chat</span>
+                    <span class="nav-label">Messages</span>
+                </a>
+                <span class="nav-tooltip">Messages</span>
+            </li>
+            {% endif %}
 
-                {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <span class="nav-icon material-symbols-rounded">settings</span>
-                        <span class="nav-label">Settings</span>
-                    </a>
-                    <span class="nav-tooltip">Settings</span>
-                </li>
-                {% endif %}
+            {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <span class="nav-icon material-symbols-rounded">notifications</span>
+                    <span class="nav-label">Notifications</span>
+                </a>
+                <span class="nav-tooltip">Notifications</span>
+            </li>
+            {% endif %}
+
+            {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <span class="nav-icon material-symbols-rounded">settings</span>
+                    <span class="nav-label">Settings</span>
+                </a>
+                <span class="nav-tooltip">Settings</span>
+            </li>
+            {% endif %}
             {% elif session["user_type"] == "employer" %}
-                {% if request.path != "/employer/dashboard" %} 
-                <li class="nav-item">
-                    <a href="/employer/dashboard" class="nav-link"> 
-                        <span class="nav-icon material-symbols-rounded">dashboard</span>
-                        <span class="nav-label">Dashboard</span>
-                    </a>
-                    <span class="nav-tooltip">Dashboard</span>
-                </li>
-                {% endif %}
+            {% if request.path != "/employer/dashboard" %}
+            <li class="nav-item">
+                <a href="/employer/dashboard" class="nav-link">
+                    <span class="nav-icon material-symbols-rounded">dashboard</span>
+                    <span class="nav-label">Dashboard</span>
+                </a>
+                <span class="nav-tooltip">Dashboard</span>
+            </li>
+            {% endif %}
 
-                {% if request.path != "/employer" %}
-                <li class="nav-item">
-                    <a href="/employer" class="nav-link">
-                        <span class="nav-icon material-symbols-rounded">search</span> 
-                        <span class="nav-label">Browse Jobs</span>
-                    </a>
-                    <span class="nav-tooltip">Browse Jobs</span>
-                </li>
-                {% endif %}
+            {% if request.path != "/employer" %}
+            <li class="nav-item">
+                <a href="/employer" class="nav-link">
+                    <span class="nav-icon material-symbols-rounded">search</span>
+                    <span class="nav-label">Browse Jobs</span>
+                </a>
+                <span class="nav-tooltip">Browse Jobs</span>
+            </li>
+            {% endif %}
 
-                {% if request.path != "/employer/post" %}
-                <li class="nav-item">
-                    <a href="/employer/post" class="nav-link">
-                        <span class="nav-icon material-symbols-rounded">edit_document</span>
-                        <span class="nav-label">Post a Job</span>
-                    </a>
-                    <span class="nav-tooltip">Post a Job</span>
-                </li>
-                {% endif %}
+            {% if request.path != "/employer/post" %}
+            <li class="nav-item">
+                <a href="/employer/post" class="nav-link">
+                    <span class="nav-icon material-symbols-rounded">edit_document</span>
+                    <span class="nav-label">Post a Job</span>
+                </a>
+                <span class="nav-tooltip">Post a Job</span>
+            </li>
+            {% endif %}
 
-                {% if request.path != "/employer/mypostings" %}
-                <li class="nav-item">
-                    <a href="/employer/mypostings" class="nav-link">
-                        <span class="nav-icon material-symbols-rounded">folder</span>
-                        <span class="nav-label">My Postings</span>
-                    </a>
-                    <span class="nav-tooltip">My Postings</span>
-                </li>
-                {% endif %}
-                
-                {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <span class="nav-icon material-symbols-rounded">chat</span>
-                        <span class="nav-label">Messages</span>
-                    </a>
-                    <span class="nav-tooltip">Messages</span>
-                </li>
-                {% endif %}
+            {% if request.path != "/employer/mypostings" %}
+            <li class="nav-item">
+                <a href="/employer/mypostings" class="nav-link">
+                    <span class="nav-icon material-symbols-rounded">folder</span>
+                    <span class="nav-label">My Postings</span>
+                </a>
+                <span class="nav-tooltip">My Postings</span>
+            </li>
+            {% endif %}
 
-                {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <span class="nav-icon material-symbols-rounded">notifications</span>
-                        <span class="nav-label">Notifications</span>
-                    </a>
-                    <span class="nav-tooltip">Notifications</span>
-                </li>
-                {% endif %}
+            {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <span class="nav-icon material-symbols-rounded">chat</span>
+                    <span class="nav-label">Messages</span>
+                </a>
+                <span class="nav-tooltip">Messages</span>
+            </li>
+            {% endif %}
 
-                {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <span class="nav-icon material-symbols-rounded">settings</span>
-                        <span class="nav-label">Settings</span>
-                    </a>
-                    <span class="nav-tooltip">Settings</span>
-                </li>
-                {% endif %}
+            {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <span class="nav-icon material-symbols-rounded">notifications</span>
+                    <span class="nav-label">Notifications</span>
+                </a>
+                <span class="nav-tooltip">Notifications</span>
+            </li>
+            {% endif %}
+
+            {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <span class="nav-icon material-symbols-rounded">settings</span>
+                    <span class="nav-label">Settings</span>
+                </a>
+                <span class="nav-tooltip">Settings</span>
+            </li>
+            {% endif %}
             {% elif session["user_type"] == "admin" %}
 
-                {% if request.path != "/admin/dashboard" %}
-                <li class="nav-item">
-                    <a href="/admin/dashboard" class="nav-link"> 
-                        <span class="nav-icon material-symbols-rounded">dashboard</span>
-                        <span class="nav-label">Dashboard</span>
-                    </a>
-                    <span class="nav-tooltip">Dashboard</span>
-                </li>
-                {% endif %}
+            {% if request.path != "/admin/dashboard" %}
+            <li class="nav-item">
+                <a href="/admin/dashboard" class="nav-link">
+                    <span class="nav-icon material-symbols-rounded">dashboard</span>
+                    <span class="nav-label">Dashboard</span>
+                </a>
+                <span class="nav-tooltip">Dashboard</span>
+            </li>
+            {% endif %}
 
-                {% if request.path != "/admin" %}
-                <li class="nav-item">
-                    <a href="/admin" class="nav-link">
-                        <span class="nav-icon material-symbols-rounded">search</span>
-                        <span class="nav-label">Review Job Listings</span>
-                    </a>
-                    <span class="nav-tooltip">Review Job Listings</span>
-                </li>
-                {% endif %}
+            {% if request.path != "/admin" %}
+            <li class="nav-item">
+                <a href="/admin" class="nav-link">
+                    <span class="nav-icon material-symbols-rounded">search</span>
+                    <span class="nav-label">Review Job Listings</span>
+                </a>
+                <span class="nav-tooltip">Review Job Listings</span>
+            </li>
+            {% endif %}
 
-                {% if request.path != "/admin/review" %}
-                <li class="nav-item">
-                    <a href="/admin/review" class="nav-link">
-                        <span class="nav-icon material-symbols-rounded">grading</span>
-                        <span class="nav-label">Review Job Listings</span>
-                    </a>
-                    <span class="nav-tooltip">Review Job Listings</span>
-                </li>
-                {% endif %}
+            {% if request.path != "/admin/review" %}
+            <li class="nav-item">
+                <a href="/admin/review" class="nav-link">
+                    <span class="nav-icon material-symbols-rounded">grading</span>
+                    <span class="nav-label">Review Job Listings</span>
+                </a>
+                <span class="nav-tooltip">Review Job Listings</span>
+            </li>
+            {% endif %}
 
 
-                {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <span class="nav-icon material-symbols-rounded">chat</span>
-                        <span class="nav-label">Messages</span>
-                    </a>
-                    <span class="nav-tooltip">Messages</span>
-                </li>
-                {% endif %}
+            {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <span class="nav-icon material-symbols-rounded">chat</span>
+                    <span class="nav-label">Messages</span>
+                </a>
+                <span class="nav-tooltip">Messages</span>
+            </li>
+            {% endif %}
 
-                {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <span class="nav-icon material-symbols-rounded">notifications</span>
-                        <span class="nav-label">Notifications</span>
-                    </a>
-                    <span class="nav-tooltip">Notifications</span>
-                </li>
-                {% endif %}
+            {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <span class="nav-icon material-symbols-rounded">notifications</span>
+                    <span class="nav-label">Notifications</span>
+                </a>
+                <span class="nav-tooltip">Notifications</span>
+            </li>
+            {% endif %}
 
-                {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <span class="nav-icon material-symbols-rounded">settings</span>
-                        <span class="nav-label">Settings</span>
-                    </a>
-                    <span class="nav-tooltip">Settings</span>
-                </li>
-                {% endif %}
+            {% if request.path != "TODO TODO TODO TODO TODO TODO TODO" %}
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <span class="nav-icon material-symbols-rounded">settings</span>
+                    <span class="nav-label">Settings</span>
+                </a>
+                <span class="nav-tooltip">Settings</span>
+            </li>
+            {% endif %}
             {% endif %}
         </ul>
 
         <ul class="nav-list secondary-nav">
-            
+
 
             <li class="nav-item">
                 <a href="#" class="nav-link">
-                    <span class="nav-icon material-symbols-rounded">{{ 
+                    <span class="nav-icon material-symbols-rounded">{{
                         {"admin": "manage_accounts", "employer": "work"}.get(session["user_type"], "account_circle")
-                    }}</span>
+                        }}</span>
                     <span class="nav-label">{{ session["user_type"].title() }} Profile</span>
                 </a>
                 <span class="nav-tooltip">{{ session["user_type"].title() }} Profile</span>

@@ -10,38 +10,24 @@
 </head>
 
 <body>
+    {% from "sidebar.html" import search_bar %}
     {% include "sidebar.html" %}
 
     <div id="main-page">
 
-        <form id="searchbar-holder" autocomplete="off" method="GET">
-            <div class="search-input-container">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input id="searchbar" name="query" placeholder="Type to begin search..." value="{{ query or '' }}">
-            </div>
-
-            <div class="filter-container">
-                <select name="filter" id="filter-select">
-                    <option value="all" {% if filter=='all' %}selected{% endif %}>Show All</option>
-                    <option value="approved" {% if filter=='approved' %}selected{% endif %}>Show Approved</option>
-                    <option value="pending" {% if filter=='pending' %}selected{% endif %}>Show Pending</option>
-                </select>
-            </div>
-
-            <button type="submit" id="search-button">Search</button>
-        </form>
+        {{ search_bar(search_type='filter', query=query, filter=filter) }}
 
         <div id="lots-of-postings">
             {% for list in data %}
             <div class="postings">
-                <div id="company-info">
-                    <img src="/static/images/{{list[4]}}" id="company-pic">
-                    <p id="company-name">{{list[3]}}</p>
+                <div class="company-info">
+                    <img src="/static/images/{{list[4]}}" class="company-pic">
+                    <p class="company-name">{{list[3]}}</p>
                 </div>
 
-                <div id="job-info">
-                    <p id="job-title">{{list[1]}}</p>
-                    <p id="job-desc">{{list[2]}}</p>
+                <div class="job-info">
+                    <p class="job-title">{{list[1]}}</p>
+                    <p class="job-desc">{{list[2]}}</p>
 
                     {% if list[5] == 1 %}
                     <p class="approved">Approved</p>

@@ -3,49 +3,19 @@
   src: url(/static/fonts/soopafre.ttf);
 }
 
-/* html, body {
-    height: 100%;
-} */
-
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  background-image: linear-gradient(to right,
+      rgb(245, 228, 135),
+      rgba(234, 232, 172, 0.132));
 }
 
 button:hover {
   background-color: #4f603a !important;
   transition: background-color 0.2s;
-}
-
-#sidebar {
-  display: flex;
-  width: 200px;
-  padding: 5px;
-  align-items: center;
-  flex-direction: column;
-  background-image: linear-gradient(
-    to bottom,
-    rgb(245, 228, 135),
-    rgba(234, 232, 172, 0.132)
-  );
-  border: #4f603a solid 2px;
-  position: relative;
-}
-
-#sidebar > button {
-  border-radius: 10px;
-  border: #4f603a 3px solid;
-  padding: 7px;
-  background-color: #b4c273;
-  font-weight: bold;
-  margin-top: 10px;
-  color: #2c3115;
-}
-
-#sidebar > button {
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 #cotj {
@@ -58,8 +28,6 @@ button:hover {
   width: 50%;
 }
 
-
-/*importing google fonts (poppins)*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 #main-page {
@@ -80,7 +48,6 @@ button:hover {
   width: calc(100% - 85px);
 }
 
-
 #searchbar-holder {
   background-image: linear-gradient(to right,
       rgb(87, 130, 87),
@@ -89,14 +56,31 @@ button:hover {
   align-items: center;
   justify-content: center;
   min-height: 100px;
-  margin-block-end: 0;
+  padding: 0 20px;
+  gap: 20px;
+}
+
+.search-input-container {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  flex-grow: 1;
+  max-width: 600px;
+  background-image: linear-gradient(to right, rgb(245, 228, 135), rgba(164, 206, 113, 0.653));
+  border: 3px solid #43621a;
+  border-radius: 15px;
+  padding: 0 15px;
+}
+
+.search-input-container i {
+  margin-right: 10px;
 }
 
 #searchbar {
+  width: 100%;
   border: none;
-  background-color: transparent;
+  background: transparent;
   outline: none;
-  flex-grow: 1;
   font-size: medium;
 }
 
@@ -105,35 +89,14 @@ button:hover {
   color: rgba(0, 0, 0, 0.566);
 }
 
-#searchbar-container {
-  display: flex;
-  align-items: center;
-  background-image: linear-gradient(to right,
-      rgb(245, 228, 135),
-      rgb(158, 219, 158));
-  border: 3px solid #43621a;
-  border-radius: 15px;
-  width: 800px;
-  height: 40%;
-}
-
-#searchbar-container i {
-  margin-left: 6px;
-}
-
-
-#searchbar-holder {
-  gap: 20px;
-}
-
-#sort-container {
+.search-controls {
   display: flex;
   align-items: center;
   gap: 10px;
-  height: 40px;
 }
 
 #sort-select,
+#filter-select,
 #search-button {
   height: 44px;
   border: 3px solid #43621a;
@@ -145,15 +108,9 @@ button:hover {
   padding: 0 15px;
 }
 
-#search-button {
-  font-weight: bold;
-  cursor: pointer;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
 #search-button:hover {
-  background-color: #394e22;
+  background-color: #394e22 !important;
+  color: white;
 }
 
 #lots-of-postings {
@@ -186,18 +143,18 @@ button:hover {
   position: relative;
 }
 
-#company-info {
+.company-info {
   max-width: 100px;
   margin-right: 10px;
   color: #2c3115;
 }
 
-#company-pic {
+.company-pic {
   width: 100px;
   height: 100px;
 }
 
-#apply {
+.apply {
   width: 150px;
   height: 38px;
   border: 3px solid #70821fc2;
@@ -212,38 +169,25 @@ button:hover {
   color: #2c3115;
 }
 
-#apply:hover {
+.apply:hover {
   background-color: #394e22;
 }
 
-#job-desc {
+.job-desc {
   overflow-y: auto;
   color: #2c3115;
 }
 
-#job-desc {
-  overflow-y: auto;
-}
-
-#job-title {
+.job-title {
   font-size: large;
   font-weight: bold;
   color: #2c3115;
 }
 
-#company-name {
+.company-name {
   font-size: large;
   font-weight: bold;
   color: #2c3115;
-}
-
-/*sidebar*/
-body {
-  min-height: 100vh;
-  background-image: linear-gradient(to right,
-      rgb(245, 228, 135),
-      rgba(234, 232, 172, 0.132));
-
 }
 
 * {
@@ -286,7 +230,6 @@ body {
   display: flex;
   padding-top: 10px;
   padding-bottom: 10px;
-  /* padding: 10px 10px 10px 30px; */
   align-items: center;
   transition: all 0.4s ease;
   justify-content: center;
@@ -413,7 +356,7 @@ body {
   border-radius: 8px;
   background: rgb(245, 228, 135);
   white-space: nowrap;
-  box-shadow: 0 5px 10px rgba(0, 0, 0.1);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar.collapsed .sidebar-nav .nav-tooltip {
@@ -427,7 +370,6 @@ body {
   transition: 0.4s ease;
 }
 
-
 .sidebar-nav .secondary-nav {
   position: absolute;
   bottom: 10px;
@@ -436,6 +378,43 @@ body {
 
 .flashes {
   color: red;
+}
+
+.save-button {
+  width: 120px;
+  height: 38px;
+  border: 3px solid #70821fc2;
+  border-radius: 10px;
+  background-color: transparent;
+  font-size: large;
+  font-weight: bold;
+  position: absolute;
+  right: 215px;
+  bottom: 15px;
+  color: #2c3115;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.save-button:hover {
+  background-color: #e0e0d1 !important;
+}
+
+.save-button.saved {
+  background-color: #f5e487;
+  border-color: #e2a000;
+  color: #614d00;
+}
+
+.save-button.saved:hover {
+  background-color: #e6d577 !important;
+}
+
+.save-button .material-symbols-rounded {
+  font-size: 24px;
 }
 
 /*sidebar compatible w/mobile devices*/
@@ -451,7 +430,7 @@ body {
   }
 
   .sidebar {
-    height: 56px; /* Changed from 'auto' to a fixed height */
+    height: 56px;
     margin: 0;
     border-radius: 0;
     border: none;
@@ -462,6 +441,6 @@ body {
     scrollbar-width: none;
     position: relative;
   }
-
-  /* ... rest of the mobile styles ... */
 }
+
+/* rest of the mobile styles... */

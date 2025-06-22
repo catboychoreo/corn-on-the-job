@@ -2,11 +2,10 @@
 <html>
 
 <head>
-    <title>Corn on the Job</title>
+    <title>Corn on the Job - Saved Jobs</title>
     {% include "common_head.html" %}
 
     <link href="/static/student/studenthome.css" rel="stylesheet">
-    <link href="/static/admin/adminhome.css" rel="stylesheet">
 </head>
 
 <body>
@@ -15,9 +14,14 @@
 
     <div id="main-page">
 
-        {{ search_bar(search_type='sort', query=query, sort=sort) }}
+        {{ search_bar(search_type='sort', query=query, sort=sort, placeholder='Search in your saved jobs...') }}
 
         <div id="lots-of-postings">
+
+            {% if not data %}
+            <p style="margin-top: 50px; font-size: larger; font-weight: bold;">You haven't saved any jobs yet!</p>
+            {% endif %}
+
             {% for list in data %}
             <div class="postings">
                 <div class="company-info">
@@ -29,16 +33,17 @@
                     <p class="job-title">{{list[1]}}</p>
                     <p class="job-desc">{{list[2]}}</p>
 
-                    <form class="delete-post" action="/admin/delete" method="POST" onsubmit="return confirmDeletion()">
-                        <button class="delete">Delete posting</button>
-                        <input type="hidden" name="post-id" value="{{list[0]}}">
-                    </form>
+                    <button class="apply" onclick="window.location = '/student/apply/{{list[0]}}'">Apply</button>
+                    <button class="save-button saved" data-job-id="{{ list[0] }}">
+                        <span class="material-symbols-rounded">star</span>
+                        Saved
+                    </button>
                 </div>
             </div>
             {% endfor %}
         </div>
-    </div>
 
+    </div>
 
 </body>
 <script src="/static/student/studenthome.js"></script>
