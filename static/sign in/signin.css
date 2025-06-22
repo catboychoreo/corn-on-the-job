@@ -1,53 +1,166 @@
-html, body {
-  height: 100%;
+:root {
+  --accent-color: rgb(46, 60, 39);
+  --base-color: rgba(215, 215, 177, 0.97);
+  --text-color: #0e1710;
+  --input-color: #ffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: Poppins, Segoe UI;
+  font-size: 12pt;
+  color: var(--text-color);
+  text-align: center;
 }
 
 body {
-  display: flex;
-  margin: 0px;
-  background-image: linear-gradient(
-    to bottom,
-    rgb(244, 225, 120),
-    rgba(171, 223, 148, 0.664)
-  );
-  font-family: Arial, Helvetica, sans-serif;
-  justify-content: center;
-  align-items: center;
+  min-height: 100vh;
+  background-image: url('../images/cornfield.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
+  overflow: hidden;
 }
 
-button:hover {
-  background-color: #5d603a !important;
-  transition: background-color 0.2s;
-}
-
-#sign-in {
+/*login left-side panel*/
+.wrapper {
+  box-sizing: border-box;
+  background-color: var(--base-color);
+  height: 100vh;
+  width: max(40%, 250px);
+  padding: 10px;
+  border-radius: 0 20px 20px 0;
   display: flex;
-  background-color: #f1e77fb6;
-  border: #4f603a 3px solid;
-  border-radius: 30px;
   flex-direction: column;
-  width: 330px;
-  padding: 20px 0;
   align-items: center;
   justify-content: center;
-  gap: 5px;
 }
 
-#text {
-  font-size: large;
-  font-weight: bold;
+h1 {
+  font-size: 2.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
-#log-in {
-  border-radius: 10px;
-  border: #4f603a 3px solid;
-  padding: 7px;
-  background-color: #adba75;
-  font-weight: bold;
-  display: block;
+form {
+  width: min(400px, 100%);
+  margin-top: 20px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
-.flashes {
+form > div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+form label {
+  flex-shrink: 0;
+  height: 50px;
+  width: 50px;
+  background-color: var(--accent-color);
+  fill: var(--base-color);
+  color: var(--base-color);
+  border-radius: 10px 0 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+form input {
+  box-sizing: border-box;
+  flex-grow: 1;
+  min-width: 0;
+  height: 50px;
+  padding: 1em;
+  font: inherit;
+  border-radius: 0 10px 10px 0;
+  border: 2px solid var(--input-color);
+  border-left: none;
+  background-color: var(--input-color);
+  transition: 150ms ease;
+}
+
+form input:hover {
+  border-color: var(--accent-color);
+}
+
+form input:focus {
+  outline: none;
+  border-color: var(--text-color);
+}
+
+div:has(input:focus) > label {
+  background-color: var(--text-color);
+}
+
+form input::placeholder {
+  color: var(--text-color);
+}
+
+/*login button*/
+form button {
+  margin-top: 10px;
+  border: none;
+  border-radius: 1000px;
+  padding: 0.85em 4em;
+  background-color: var(--accent-color);
+  color: var(--base-color);
+  font: inherit;
+  font-weight: 400;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 150ms ease;
+}
+
+form button:hover {
+  background-color: var(--text-color) !important;
+}
+
+form button:focus {
+  outline: none;
+  background-color: var(--text-color);
+}
+
+/*small text*/
+a {
+  text-decoration: none;
+  color: rgb(41, 97, 40);
+  font-weight: 600;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/*mobile-friendly*/
+@media(max-width: 1100px) {
+  .wrapper {
+    width: min(600px, 100%);
+    border-radius: 0;
+  }
+}
+
+/*error messages*/
+form div.incorrect label {
+  background-color: #cf3a4c;
+}
+
+form div.incorrect input {
+  border-color: #cf3a4c;
+}
+
+/*.flashes {
   background-color: #ffb3b3;
   border: 2px solid #c70000;
   border-radius: 10px;
@@ -62,3 +175,4 @@ button:hover {
   color: #c70000;
   font-weight: bold;
 }
+*/

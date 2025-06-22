@@ -8,10 +8,9 @@
 } */
 
 body {
-  margin: 0px;
-  background-color: #b4c273;
+  margin: 0;
+  padding: 0;
   font-family: Arial, Helvetica, sans-serif;
-  display: flex;
 }
 
 button:hover {
@@ -67,7 +66,9 @@ button:hover {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  background: linear-gradient(to bottom right, #e0f7df, #b7d7a8);
+  background-image: linear-gradient(to right,
+      rgb(245, 228, 135),
+      rgba(71, 106, 71, 0.578));
   margin-left: 270px;
   width: calc(100% - 270px);
   transition: all 0.4s ease;
@@ -109,7 +110,7 @@ button:hover {
   align-items: center;
   background-image: linear-gradient(to right,
       rgb(245, 228, 135),
-      rgb(87, 130, 87));
+      rgb(158, 219, 158));
   border: 3px solid #43621a;
   border-radius: 15px;
   width: 800px;
