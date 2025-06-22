@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width-device-width, initial-scale=1.0">
-    
-    <title>Corn on the Job</title>
+    <title>Sign In - Corn on the Job</title>
     {% include "common_head.html" %}
     <link href="/static/sign in/signin.css" rel="stylesheet">
-    <script type="text/javascript" src="validation.js" defer></script>
 </head>
 
 <body>
     <div class="wrapper">
     <h1>Login</h1>
-    <form id = form>
-    <!--<form id="sign-in" method="post">
-        {% with messages = get_flashed_messages() %}
+    {% with messages = get_flashed_messages() %}
         {% if messages %}
         <div class="flashes">
             {% for message in messages %}
@@ -23,7 +17,8 @@
             {% endfor %}
         </div>
         {% endif %}
-        {% endwith %}-->
+    {% endwith %}
+    <form id="form" method="POST">
         <div>
         <label for="username-input">
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z"/></svg>

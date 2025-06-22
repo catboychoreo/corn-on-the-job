@@ -476,30 +476,41 @@ def get_in():
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
-    if request.method == "POST":
-        username = request.form.get("username")
-        password = request.form.get("password")
-        user_type = request.form.get("user_type")
+    if request.method == "GET":
+        return render_template("signup.html")
 
-        assert user_type in ["employer", "student"]
+    username = request.form.get("username")
+    password = request.form.get("password")
+    repeated_password = request.form.get("repeat-password")
+    user_type = request.form.get("user_type")
 
-        hashed_password = generate_password_hash(password)
+    if password != repeated_password:
+        flash("Password doesn't match repeated password! Try again.")
+        return redirect("/signup")
 
-        db = get_db()
-        try:
-            db.execute(
-                "INSERT INTO USERS (username, password, user_type) VALUES (?, ?, ?)",
-                (username, hashed_password, user_type),
-            )
-            db.commit()
-            flash("Account created successfully! Please log in.")
-        except sqlite3.IntegrityError:
-            flash("Username already taken. Please go back and try another.")
-            return redirect("/signup")
+    assert user_type in ["employer", "student"]
 
-        return redirect("/signin")
+    hashed_password = generate_password_hash(password)
 
-    return render_template("signup.html")
+    db = get_db()
+    try:
+        cur = db.execute(
+            "INSERT INTO USERS (username, password, user_type) VALUES (?, ?, ?)",
+            (username, hashed_password, user_type),
+        )
+        user_id = cur.lastrowid
+        db.commit()
+    except sqlite3.IntegrityError:
+        flash("Username already taken. Please go back and try another.")
+        return redirect("/signup")
+
+    session.clear()
+    session["user_id"] = user_id
+    session["username"] = username
+    session["user_type"] = user_type
+    
+    return redirect(f"/{user_type}/dashboard")
+
 
 
 @app.route("/logout")
